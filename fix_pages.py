@@ -1,0 +1,275 @@
+import re
+
+# --- ABOUT.HTML FIX ---
+with open('e:/ecc/about.html', 'r', encoding='utf-8') as f:
+    ab = f.read()
+
+# Revert dark theme back to light theme
+ab = ab.replace('bg-black', 'bg-earth-100')
+ab = ab.replace('from-[#111]', 'from-earth-50')
+ab = ab.replace('via-black', 'via-earth-100')
+ab = ab.replace('to-black', 'to-earth-200')
+ab = ab.replace('bg-[#0A0A0A]', 'bg-earth-50')
+ab = ab.replace('text-white', 'text-primary-900')
+ab = ab.replace('text-gray-400', 'text-dark/70')
+ab = ab.replace('text-gray-300', 'text-dark/80')
+ab = ab.replace('text-gray-500', 'text-dark/50')
+ab = ab.replace('text-gold-500', 'text-gold-600')
+ab = ab.replace('bg-black/90', 'bg-white/95')
+ab = ab.replace('bg-black/60', 'bg-white/80')
+ab = ab.replace('bg-black/80', 'bg-earth-100/80')
+ab = ab.replace('bg-black/50', 'bg-earth-100/50')
+
+with open('e:/ecc/about.html', 'w', encoding='utf-8') as f:
+    f.write(ab)
+
+# --- CART.HTML FIX ---
+cart_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | THE HANURAAM WELLNESS</title>
+    <meta name="description" content="Review your premium Ayurvedic wellness items.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' },
+                        gold: { 400: '#F5E6A3', 500: '#E3C16F', 600: '#C9A84C' },
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EE', 200: '#F3EFE4' },
+                        brown: { 800: '#6E4E37' },
+                        olive: { 600: '#7A8450' },
+                        dark: '#1D1D1D'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass { @apply bg-white/80 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)]; }
+            .glass-card { @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)] hover:border-gold-500/50 hover:bg-white hover:-translate-y-2 transition-all duration-300; }
+        }
+        body { @apply bg-earth-100 text-dark font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="antialiased">
+
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-400 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="font-serif text-2xl font-bold tracking-wider text-primary-900">THE HANURAAM</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
+                    <a href="about.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">About</a>
+                    <a href="products.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Products</a>
+                    <a href="ingredients.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Ingredients</a>
+                    <a href="contact.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Contact</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative border-b-2 border-primary-900 pb-1">
+                        <i class="fas fa-shopping-bag text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center space-x-4">
+                    <a href="cart.html" class="text-primary-900 relative">
+                        <i class="fas fa-shopping-bag text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">About</a>
+                <a href="products.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Products</a>
+                <a href="ingredients.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Ingredients</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 relative bg-earth-200 border-b border-primary-900/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl font-bold mb-2 font-serif text-primary-900">Your <span class="text-gold-600">Cart</span></h1>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="py-16 relative min-h-[50vh] bg-earth-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <!-- Cart Items -->
+                <div class="lg:w-2/3">
+                    <div class="glass border border-primary-900/10 rounded-xl overflow-hidden bg-white">
+                        <div class="border-b border-primary-900/10 p-6 hidden md:grid grid-cols-12 gap-4 text-xs font-semibold text-primary-900 uppercase tracking-widest bg-earth-100">
+                            <div class="col-span-6">Product</div>
+                            <div class="col-span-2 text-center">Price</div>
+                            <div class="col-span-2 text-center">Quantity</div>
+                            <div class="col-span-2 text-right">Total</div>
+                        </div>
+                        
+                        <!-- Item 1 -->
+                        <div class="p-6 border-b border-primary-900/5 flex flex-col md:grid md:grid-cols-12 gap-4 items-center">
+                            <div class="col-span-6 flex items-center w-full">
+                                <div class="w-20 h-20 bg-earth-100 border border-gold-500/30 rounded flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-leaf text-3xl text-primary-900"></i>
+                                </div>
+                                <div class="ml-4 flex-grow">
+                                    <h3 class="font-serif text-lg text-primary-900">KORDY X</h3>
+                                    <p class="text-xs text-dark/60">Premium Ayurvedic Effervescent</p>
+                                    <button class="text-red-500 hover:text-red-400 text-xs mt-2 uppercase tracking-wide md:hidden"><i class="fas fa-trash-alt mr-1"></i> Remove</button>
+                                </div>
+                            </div>
+                            <div class="col-span-2 text-center text-primary-900 font-semibold w-full md:w-auto flex justify-between md:block mt-4 md:mt-0">
+                                <span class="md:hidden text-dark/60 text-sm">Price:</span> ₹1,499
+                            </div>
+                            <div class="col-span-2 text-center w-full md:w-auto flex justify-between md:justify-center mt-4 md:mt-0 items-center">
+                                <span class="md:hidden text-dark/60 text-sm">Qty:</span>
+                                <div class="flex items-center border border-primary-900/20 rounded bg-white">
+                                    <button class="px-3 py-1 hover:bg-earth-100 text-primary-900 transition-colors">-</button>
+                                    <span class="px-3 py-1 text-primary-900 border-l border-r border-primary-900/20 font-medium">1</span>
+                                    <button class="px-3 py-1 hover:bg-earth-100 text-primary-900 transition-colors">+</button>
+                                </div>
+                            </div>
+                            <div class="col-span-2 text-right text-primary-900 font-bold w-full md:w-auto flex justify-between md:block mt-4 md:mt-0 items-center">
+                                <span class="md:hidden text-dark/60 text-sm">Total:</span> ₹1,499
+                                <button class="text-red-500 hover:text-red-400 text-sm ml-4 hidden md:inline-block" title="Remove Item"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="lg:w-1/3">
+                    <div class="glass border border-gold-500/30 rounded-xl p-8 bg-white shadow-xl shadow-gold-600/5">
+                        <h3 class="text-xl font-serif text-primary-900 mb-6 border-b border-primary-900/10 pb-4">Order Summary</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between text-dark/70">
+                                <span>Subtotal</span>
+                                <span>₹1,499</span>
+                            </div>
+                            <div class="flex justify-between text-dark/70">
+                                <span>Shipping</span>
+                                <span class="text-primary-900 font-medium">Free</span>
+                            </div>
+                            <div class="flex justify-between text-dark/70">
+                                <span>Taxes</span>
+                                <span class="text-xs mt-1">Calculated at checkout</span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-primary-900/10 pt-4 mb-8">
+                            <div class="flex justify-between text-primary-900 font-bold text-lg">
+                                <span>Total</span>
+                                <span class="text-gold-600">₹1,499</span>
+                            </div>
+                        </div>
+                        
+                        <button id="checkout-btn" onclick="checkout()" class="w-full bg-primary-900 text-gold-400 py-4 font-bold uppercase tracking-widest text-sm hover:bg-primary-800 transition-all shadow-lg rounded-sm">
+                            Proceed to Checkout
+                        </button>
+                        
+                        <div class="mt-6 text-center text-xs text-dark/50 flex items-center justify-center space-x-2">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure SSL Encrypted Payment</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 pt-10 pb-6 border-t-8 border-gold-600 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white/40 text-xs">
+                <p>&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        window.addEventListener('scroll', function() {
+            var nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('glass');
+            } else {
+                nav.classList.add('glass');
+                nav.classList.remove('bg-white/95');
+            }
+        });
+
+        function checkout() {
+            let btn = document.getElementById('checkout-btn');
+            let originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Processing...';
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> Order Placed Successfully!';
+                btn.classList.remove('bg-primary-900', 'text-gold-400', 'opacity-80', 'cursor-not-allowed');
+                btn.classList.add('bg-green-600', 'text-white');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-green-600', 'text-white');
+                    btn.classList.add('bg-primary-900', 'text-gold-400');
+                }, 3000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+"""
+with open('e:/ecc/cart.html', 'w', encoding='utf-8') as f:
+    f.write(cart_html)
+
+print("Pages updated successfully!")

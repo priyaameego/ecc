@@ -69,7 +69,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="font-serif text-2xl font-bold tracking-wider text-primary-900">THE HANURAAM</a>
+                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium border-b-2 border-primary-900 pb-1">Home</a>
@@ -105,57 +105,31 @@
         </div>
     </nav>
 
-        <!-- Hero Banner -->
-    <section class="relative w-full h-screen min-h-[700px] mt-[104px] overflow-hidden bg-earth-50 group flex items-center">
-        <!-- Background -->
-        <div class="absolute inset-0 bg-[url('assets/hero_bg.png')] bg-cover bg-center opacity-30"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-earth-50 via-earth-50/80 to-earth-50/40"></div>
+                        <!-- Hero Banner -->
+    <style>
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.15) translate(-1%, -1%); }
+        }
+    </style>
+    <section class="relative w-full h-[85vh] min-h-[600px] mt-[104px] overflow-hidden bg-black flex items-center justify-center text-center">
+        <!-- Background Image with CSS Video Animation (Ken Burns) -->
+        <div class="absolute inset-0 bg-[url('assets/hero_bg.png')] bg-cover bg-center opacity-60" style="animation: kenburns 20s ease-in-out infinite alternate"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
         
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between">
-            <!-- Content -->
-            <div class="w-full md:w-1/2 text-left space-y-8 pt-10 md:pt-0">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-primary-900/20 bg-white/50 text-primary-900 text-xs tracking-[0.3em] font-medium uppercase backdrop-blur-sm shadow-sm">
-                    <i class="fas fa-leaf mr-2 text-gold-600"></i> Pure Ayurvedic Luxury
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl font-serif font-bold text-primary-900 leading-[1.1]">
-                    Ancient Wisdom. <br>
-                    <span class="text-gold-600">Modern Formulation.</span>
-                </h1>
-                
-                <p class="text-lg md:text-xl text-dark/70 font-light tracking-wide max-w-lg border-l-4 border-gold-500 pl-4">
-                    Experience pure wellness inspired by royal Ayurvedic traditions, elevated by modern science for your ultimate vitality.
-                </p>
-
-                <div class="pt-4 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="products.html" class="inline-flex items-center justify-center px-8 py-4 bg-primary-900 text-gold-400 font-bold tracking-widest uppercase text-sm hover:bg-primary-800 transition-all duration-300 shadow-xl shadow-primary-900/20 group/btn rounded-sm">
-                        Shop Collection 
-                        <i class="fas fa-arrow-right ml-3 group-hover/btn:translate-x-2 transition-transform"></i>
-                    </a>
-                    <a href="about.html" class="inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-md border border-primary-900/20 text-primary-900 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all duration-300 rounded-sm">
-                        Our Heritage
-                    </a>
-                </div>
-            </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center space-y-6">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight drop-shadow-2xl">
+                Transform Your <br> Health with the Power <br> <span class="italic font-light">of Ayurveda</span>
+            </h1>
             
-            <!-- Floating Product -->
-            <div class="hidden md:flex w-full md:w-1/2 justify-end relative h-[600px] items-center">
-                <div class="absolute w-[120%] h-[120%] bg-gold-400/10 blur-[80px] rounded-full z-0"></div>
-                
-                <div class="relative z-10 w-64 h-96 bg-gradient-to-br from-[#0a1a15] via-primary-900 to-[#133329] rounded-2xl border-2 border-gold-500 shadow-[0_20px_50px_rgba(201,168,76,0.3)] flex flex-col items-center justify-center animate-[float_6s_ease-in-out_infinite]">
-                    <div class="absolute -inset-4 bg-gold-400/30 blur-2xl rounded-2xl -z-10"></div>
-                    <div class="w-20 h-10 bg-gradient-to-b from-gold-400 to-gold-600 rounded-t-xl border-b-4 border-gold-700 mb-6 flex items-center justify-center shadow-inner">
-                        <div class="w-16 h-2 bg-gold-200 rounded-full opacity-60 shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
-                    </div>
-                    <i class="fas fa-leaf text-gold-400 text-5xl mb-6 drop-shadow-[0_0_15px_rgba(201,168,76,0.5)]"></i>
-                    <h2 class="text-white font-serif text-3xl tracking-widest mb-2 font-bold">KORDY X</h2>
-                    <p class="text-gold-400 text-[10px] tracking-[0.3em] uppercase mb-6 text-center px-4 font-semibold">Premium Effervescent</p>
-                    <div class="w-20 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
-                </div>
+            <p class="text-lg md:text-xl text-white/90 font-light tracking-wide max-w-2xl drop-shadow-md">
+                Made with ancient Ayurvedic wisdom and 100% organic ingredients
+            </p>
 
-                <!-- Floating leaves -->
-                <i class="fas fa-leaf absolute top-1/4 right-1/4 text-primary-900/30 text-3xl animate-[spin_10s_linear_infinite] blur-[1px]"></i>
-                <i class="fas fa-spa absolute bottom-1/3 left-1/4 text-gold-600/40 text-4xl animate-[spin_15s_linear_infinite_reverse] blur-[2px]"></i>
+            <div class="pt-8">
+                <a href="products.html" class="inline-flex items-center justify-center px-8 py-4 bg-[#4CAF50] text-white font-bold tracking-wide rounded-full text-lg hover:bg-[#45a049] transition-all duration-300 shadow-2xl hover:-translate-y-1">
+                    Start Your Wellness Journey
+                </a>
             </div>
         </div>
     </section>
@@ -227,7 +201,7 @@
                 <!-- Product 1 -->
                 <div class="glass-card rounded-3xl p-6 relative group bg-white border border-primary-900/10">
                     <div class="absolute top-4 left-4 bg-gold-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10">Bestseller</div>
-                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors" onclick="toggleLike(this)"><i class="fas fa-heart text-xl transition-transform duration-200"></i></div>
+                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors"><i class="fas fa-heart text-xl"></i></div>
                     
                     <div class="h-64 flex items-center justify-center mb-6 relative overflow-hidden rounded-2xl bg-earth-50 group-hover:bg-earth-100 transition-colors">
                         <div class="w-24 h-40 bg-gradient-to-br from-primary-900 to-primary-800 rounded-xl border border-gold-500/30 shadow-lg flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -247,7 +221,7 @@
                             <span class="text-lg font-semibold text-primary-900">₹1,499</span>
                             <span class="text-sm text-dark/40 line-through">₹1,999</span>
                         </div>
-                        <button onclick="addToCart(this)" class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+                        <button class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
                             Add to Cart
                         </button>
                     </div>
@@ -255,7 +229,7 @@
 
                 <!-- Product 2 -->
                 <div class="glass-card rounded-3xl p-6 relative group bg-white border border-primary-900/10">
-                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors" onclick="toggleLike(this)"><i class="fas fa-heart text-xl transition-transform duration-200"></i></div>
+                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors"><i class="fas fa-heart text-xl"></i></div>
                     
                     <div class="h-64 flex items-center justify-center mb-6 relative overflow-hidden rounded-2xl bg-earth-50 group-hover:bg-earth-100 transition-colors">
                         <div class="w-24 h-32 bg-gradient-to-br from-brown-800 to-black rounded-xl border border-gold-500/30 shadow-lg flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -274,7 +248,7 @@
                         <div class="flex items-center justify-center space-x-3 mb-6">
                             <span class="text-lg font-semibold text-primary-900">₹899</span>
                         </div>
-                        <button onclick="addToCart(this)" class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+                        <button class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
                             Add to Cart
                         </button>
                     </div>
@@ -283,7 +257,7 @@
                 <!-- Product 3 -->
                 <div class="glass-card rounded-3xl p-6 relative group bg-white border border-primary-900/10">
                     <div class="absolute top-4 left-4 bg-primary-900 text-gold-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest z-10">New</div>
-                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors" onclick="toggleLike(this)"><i class="fas fa-heart text-xl transition-transform duration-200"></i></div>
+                    <div class="absolute top-4 right-4 text-primary-900/30 hover:text-gold-600 cursor-pointer z-10 transition-colors"><i class="fas fa-heart text-xl"></i></div>
                     
                     <div class="h-64 flex items-center justify-center mb-6 relative overflow-hidden rounded-2xl bg-earth-50 group-hover:bg-earth-100 transition-colors">
                         <div class="w-20 h-28 bg-gradient-to-br from-yellow-900 to-black rounded-full border border-gold-500/30 shadow-lg flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -303,7 +277,7 @@
                             <span class="text-lg font-semibold text-primary-900">₹2,199</span>
                             <span class="text-sm text-dark/40 line-through">₹2,599</span>
                         </div>
-                        <button onclick="addToCart(this)" class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+                        <button class="w-full py-3 bg-white border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300">
                             Add to Cart
                         </button>
                     </div>
@@ -379,33 +353,25 @@
     </section>
 
     <!-- Market Statistics -->
-    <section class="py-20 relative overflow-hidden bg-primary-900 border-y-4 border-gold-600">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-gold-600/10 blur-[100px] rounded-full"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-600/10 blur-[100px] rounded-full"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h3 class="text-center text-gold-400 tracking-[0.3em] text-sm font-bold uppercase mb-12 flex items-center justify-center">
-                <span class="w-12 h-px bg-gold-600 mr-4 hidden md:block"></span>
-                MARKET SCENARIO: Why The World Needs Ayurveda
-                <span class="w-12 h-px bg-gold-600 ml-4 hidden md:block"></span>
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-gold-600/30">
-                <div class="px-4 py-6 sm:py-0">
-                    <h4 class="text-5xl md:text-6xl font-serif text-white mb-3 drop-shadow-lg">320M+</h4>
-                    <p class="text-xs text-gold-400/80 uppercase tracking-widest font-semibold">Global Vitality Issues</p>
+    <section class="py-16 bg-white border-b border-primary-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-primary-900 tracking-[0.2em] text-xs font-bold uppercase mb-10">Why The World Needs Ayurveda Today</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-primary-900/10">
+                <div class="px-4">
+                    <h4 class="text-4xl md:text-5xl font-serif text-gold-600 mb-2">320M+</h4>
+                    <p class="text-xs text-dark/60 uppercase tracking-widest">Global Vitality Issues</p>
                 </div>
-                <div class="px-4 py-6 sm:py-0">
-                    <h4 class="text-5xl md:text-6xl font-serif text-white mb-3 drop-shadow-lg">40%</h4>
-                    <p class="text-xs text-gold-400/80 uppercase tracking-widest font-semibold">Men Face Early Decline</p>
+                <div class="px-4">
+                    <h4 class="text-4xl md:text-5xl font-serif text-gold-600 mb-2">40%</h4>
+                    <p class="text-xs text-dark/60 uppercase tracking-widest">Men Face Early Decline</p>
                 </div>
-                <div class="px-4 py-6 sm:py-0">
-                    <h4 class="text-5xl md:text-6xl font-serif text-white mb-3 drop-shadow-lg">$1.71B</h4>
-                    <p class="text-xs text-gold-400/80 uppercase tracking-widest font-semibold">Joint Issues Globally</p>
+                <div class="px-4">
+                    <h4 class="text-4xl md:text-5xl font-serif text-gold-600 mb-2">$1.71B</h4>
+                    <p class="text-xs text-dark/60 uppercase tracking-widest">Joint Issues Globally</p>
                 </div>
-                <div class="px-4 py-6 sm:py-0">
-                    <h4 class="text-5xl md:text-6xl font-serif text-white mb-3 drop-shadow-lg">1 in 3</h4>
-                    <p class="text-xs text-gold-400/80 uppercase tracking-widest font-semibold">Suffer from Stress</p>
+                <div class="px-4">
+                    <h4 class="text-4xl md:text-5xl font-serif text-gold-600 mb-2">1 in 3</h4>
+                    <p class="text-xs text-dark/60 uppercase tracking-widest">Suffer from Stress</p>
                 </div>
             </div>
         </div>
@@ -443,7 +409,7 @@
                 </div>
                 <!-- Botanical 3 -->
                 <div class="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                    <img src="assets/botanical_ginseng.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Panax Ginseng">
+                    <img src="assets/cat_joint.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Panax Ginseng">
                     <div class="absolute inset-0 bg-primary-900/40 group-hover:bg-primary-900/60 transition-colors"></div>
                     <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                         <h3 class="text-xl font-serif mb-1">Panax Ginseng</h3>
@@ -483,7 +449,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <!-- Brand -->
                 <div class="lg:col-span-2">
-                    <a href="index.html" class="font-serif text-3xl font-bold tracking-wider text-gold-500 mb-6 inline-block">THE HANURAAM</a>
+                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
                     <p class="text-white/80 font-serif italic mb-6 max-w-md text-lg">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
                     <p class="text-white/60 text-sm max-w-md leading-relaxed">
                         A premium luxury Ayurvedic wellness brand dedicated to bringing you the purest, most potent herbal formulations inspired by ancient royal traditions and backed by modern science.
@@ -543,36 +509,6 @@
                 nav.classList.remove('bg-white/95');
             }
         });
-    </script>
-
-    <script>
-        let cartCount = 0;
-        function addToCart(btn) {
-            cartCount++;
-            document.querySelectorAll('.fa-shopping-bag + span').forEach(el => {
-                el.innerText = cartCount;
-                el.classList.add('scale-125');
-                setTimeout(() => el.classList.remove('scale-125'), 300);
-            });
-            let originalText = btn.innerText;
-            btn.innerText = 'ADDED TO CART';
-            btn.classList.remove('bg-white', 'text-primary-900');
-            btn.classList.add('bg-primary-900', 'text-gold-400');
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.classList.add('bg-white', 'text-primary-900');
-                btn.classList.remove('bg-primary-900', 'text-gold-400');
-            }, 2000);
-        }
-        function toggleLike(btn) {
-            btn.classList.toggle('text-red-500');
-            btn.classList.toggle('text-primary-900/30');
-            let icon = btn.querySelector('i');
-            if(icon) {
-                icon.classList.add('scale-125');
-                setTimeout(() => icon.classList.remove('scale-125'), 200);
-            }
-        }
     </script>
 </body>
 </html>

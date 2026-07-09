@@ -1,56 +1,30 @@
 import os
 
 new_body_content = """    <!-- Hero Banner -->
-    <section class="relative w-full h-screen min-h-[700px] mt-[104px] overflow-hidden bg-earth-50 group flex items-center">
-        <!-- Background -->
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1608283286311-66795f922eb5?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center opacity-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-earth-50 via-earth-50/90 to-transparent"></div>
+    <style>
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.15) translate(-1%, -1%); }
+        }
+    </style>
+    <section class="relative w-full h-[85vh] min-h-[600px] mt-[104px] overflow-hidden bg-black flex items-center justify-center text-center">
+        <!-- Background Image with CSS Video Animation (Ken Burns) -->
+        <div class="absolute inset-0 bg-[url('assets/hero_bg.png')] bg-cover bg-center opacity-60" style="animation: kenburns 20s ease-in-out infinite alternate"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
         
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row items-center justify-between">
-            <!-- Content -->
-            <div class="w-full md:w-1/2 text-left space-y-8 pt-10 md:pt-0">
-                <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-primary-900/20 bg-white/50 text-primary-900 text-xs tracking-[0.3em] font-medium uppercase backdrop-blur-sm shadow-sm">
-                    <i class="fas fa-leaf mr-2 text-gold-600"></i> Pure Ayurvedic Luxury
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl font-serif font-bold text-primary-900 leading-[1.1]">
-                    Ancient Wisdom. <br>
-                    <span class="text-gold-600">Modern Formulation.</span>
-                </h1>
-                
-                <p class="text-lg md:text-xl text-dark/70 font-light tracking-wide max-w-lg border-l-4 border-gold-500 pl-4">
-                    Experience pure wellness inspired by royal Ayurvedic traditions, elevated by modern science for your ultimate vitality.
-                </p>
-
-                <div class="pt-4 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="products.html" class="inline-flex items-center justify-center px-8 py-4 bg-primary-900 text-gold-400 font-bold tracking-widest uppercase text-sm hover:bg-primary-800 transition-all duration-300 shadow-xl shadow-primary-900/20 group/btn rounded-sm">
-                        Shop Collection 
-                        <i class="fas fa-arrow-right ml-3 group-hover/btn:translate-x-2 transition-transform"></i>
-                    </a>
-                    <a href="about.html" class="inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-md border border-primary-900/20 text-primary-900 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all duration-300 rounded-sm">
-                        Our Heritage
-                    </a>
-                </div>
-            </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center space-y-6">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight drop-shadow-2xl">
+                Transform Your <br> Health with the Power <br> <span class="italic font-light">of Ayurveda</span>
+            </h1>
             
-            <!-- Floating Product -->
-            <div class="hidden md:flex w-full md:w-1/2 justify-end relative h-[600px] items-center">
-                <div class="absolute w-[120%] h-[120%] bg-gold-400/10 blur-[80px] rounded-full z-0"></div>
-                
-                <div class="relative z-10 w-64 h-96 bg-gradient-to-br from-primary-900 to-primary-800 rounded-2xl border-2 border-gold-500/40 shadow-2xl flex flex-col items-center justify-center animate-[float_6s_ease-in-out_infinite]">
-                    <div class="absolute -inset-4 bg-gold-400/20 blur-xl rounded-2xl -z-10"></div>
-                    <div class="w-20 h-10 bg-gold-600 rounded-t-xl border-b-2 border-gold-700 mb-6 flex items-center justify-center shadow-inner">
-                        <div class="w-16 h-2 bg-gold-400 rounded-full opacity-50"></div>
-                    </div>
-                    <i class="fas fa-leaf text-gold-400 text-5xl mb-6 drop-shadow-md"></i>
-                    <h2 class="text-white font-serif text-2xl tracking-wider mb-2">KORDY X</h2>
-                    <p class="text-gold-400/80 text-xs tracking-widest uppercase mb-6 text-center px-4">Premium Effervescent Formulation</p>
-                    <div class="w-16 h-px bg-gold-500/50"></div>
-                </div>
+            <p class="text-lg md:text-xl text-white/90 font-light tracking-wide max-w-2xl drop-shadow-md">
+                Made with ancient Ayurvedic wisdom and 100% organic ingredients
+            </p>
 
-                <!-- Floating leaves -->
-                <i class="fas fa-leaf absolute top-1/4 right-1/4 text-primary-900/30 text-3xl animate-[spin_10s_linear_infinite] blur-[1px]"></i>
-                <i class="fas fa-spa absolute bottom-1/3 left-1/4 text-gold-600/40 text-4xl animate-[spin_15s_linear_infinite_reverse] blur-[2px]"></i>
+            <div class="pt-8">
+                <a href="products.html" class="inline-flex items-center justify-center px-8 py-4 bg-[#4CAF50] text-white font-bold tracking-wide rounded-full text-lg hover:bg-[#45a049] transition-all duration-300 shadow-2xl hover:-translate-y-1">
+                    Start Your Wellness Journey
+                </a>
             </div>
         </div>
     </section>
@@ -67,7 +41,7 @@ new_body_content = """    <!-- Hero Banner -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Category 1 -->
                 <div class="group cursor-pointer relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vitality">
+                    <img src="assets/cat_vitality.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Vitality">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <h3 class="text-white font-serif text-2xl mb-2">Vitality & Power</h3>
@@ -76,7 +50,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Category 2 -->
                 <div class="group cursor-pointer relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Immunity">
+                    <img src="assets/cat_immunity.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Immunity">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <h3 class="text-white font-serif text-2xl mb-2">Immunity</h3>
@@ -85,7 +59,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Category 3 -->
                 <div class="group cursor-pointer relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Joint Care">
+                    <img src="assets/cat_joint.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Joint Care">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <h3 class="text-white font-serif text-2xl mb-2">Joint & Muscle</h3>
@@ -94,7 +68,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Category 4 -->
                 <div class="group cursor-pointer relative h-80 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                    <img src="https://images.unsplash.com/photo-1617634351335-7164cc90e292?auto=format&fit=crop&q=80&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Mind & Balance">
+                    <img src="assets/cat_mind.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Mind & Balance">
                     <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <h3 class="text-white font-serif text-2xl mb-2">Mind & Balance</h3>
@@ -222,8 +196,8 @@ new_body_content = """    <!-- Hero Banner -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Image Collage -->
                 <div class="relative h-[600px] hidden md:block">
-                    <img src="https://images.unsplash.com/photo-1542840410-3092f99611a3?auto=format&fit=crop&q=80&w=600" class="absolute top-0 left-0 w-2/3 h-2/3 object-cover rounded-t-full border-4 border-gold-600/30 shadow-2xl z-10" alt="Ayurvedic Herbs">
-                    <img src="https://images.unsplash.com/photo-1611077544837-77fb25eb4c37?auto=format&fit=crop&q=80&w=600" class="absolute bottom-0 right-0 w-2/3 h-2/3 object-cover rounded-b-full border-4 border-gold-600/30 shadow-2xl z-20" alt="Ayurvedic Mortar">
+                    <img src="assets/heritage_1.png" class="absolute top-0 left-0 w-2/3 h-2/3 object-cover rounded-t-full border-4 border-gold-600/30 shadow-2xl z-10" alt="Ayurvedic Herbs">
+                    <img src="assets/heritage_2.png" class="absolute bottom-0 right-0 w-2/3 h-2/3 object-cover rounded-b-full border-4 border-gold-600/30 shadow-2xl z-20" alt="Ayurvedic Mortar">
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary-900 border border-gold-500 rounded-full flex items-center justify-center z-30 shadow-2xl">
                         <i class="fas fa-vihara text-5xl text-gold-400"></i>
                     </div>
@@ -310,7 +284,7 @@ new_body_content = """    <!-- Hero Banner -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <!-- Botanical 1 -->
                 <div class="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1611078449942-83214d0263f6?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Ashwagandha">
+                    <img src="assets/botanical_ashwagandha.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Ashwagandha">
                     <div class="absolute inset-0 bg-primary-900/40 group-hover:bg-primary-900/60 transition-colors"></div>
                     <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                         <h3 class="text-xl font-serif mb-1">Ashwagandha</h3>
@@ -320,7 +294,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Botanical 2 -->
                 <div class="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg md:mt-8">
-                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Shilajit">
+                    <img src="assets/botanical_shilajit.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Shilajit">
                     <div class="absolute inset-0 bg-primary-900/40 group-hover:bg-primary-900/60 transition-colors"></div>
                     <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                         <h3 class="text-xl font-serif mb-1">Shilajit</h3>
@@ -330,7 +304,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Botanical 3 -->
                 <div class="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Panax Ginseng">
+                    <img src="assets/cat_joint.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Panax Ginseng">
                     <div class="absolute inset-0 bg-primary-900/40 group-hover:bg-primary-900/60 transition-colors"></div>
                     <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                         <h3 class="text-xl font-serif mb-1">Panax Ginseng</h3>
@@ -340,7 +314,7 @@ new_body_content = """    <!-- Hero Banner -->
                 </div>
                 <!-- Botanical 4 -->
                 <div class="relative h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-lg md:mt-8">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gokshura">
+                    <img src="assets/botanical_gokshura.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Gokshura">
                     <div class="absolute inset-0 bg-primary-900/40 group-hover:bg-primary-900/60 transition-colors"></div>
                     <div class="absolute inset-0 p-6 flex flex-col justify-end text-white">
                         <h3 class="text-xl font-serif mb-1">Gokshura</h3>
@@ -370,7 +344,7 @@ new_body_content = """    <!-- Hero Banner -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <!-- Brand -->
                 <div class="lg:col-span-2">
-                    <a href="index.html" class="font-serif text-3xl font-bold tracking-wider text-gold-500 mb-6 inline-block">THE HANURAAM</a>
+                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
                     <p class="text-white/80 font-serif italic mb-6 max-w-md text-lg">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
                     <p class="text-white/60 text-sm max-w-md leading-relaxed">
                         A premium luxury Ayurvedic wellness brand dedicated to bringing you the purest, most potent herbal formulations inspired by ancient royal traditions and backed by modern science.
@@ -437,12 +411,14 @@ new_body_content = """    <!-- Hero Banner -->
 with open("e:/ecc/index.html", "r", encoding="utf-8") as f:
     original = f.read()
 
-# We need to replace everything from <!-- Slider / Banner Section --> to the end of the file.
-# Note: The original file has `<!-- Slider / Banner Section -->` right after `</nav>`
+# We need to replace everything from <!-- Hero Banner --> to the end of the file.
+# Note: The original file has `<!-- Hero Banner -->` right after `</nav>`
 import re
-new_html = re.sub(r'<!-- Slider / Banner Section -->.*', new_body_content, original, flags=re.DOTALL)
+new_html = re.sub(r'<!-- Hero Banner -->.*', new_body_content, original, flags=re.DOTALL)
 
 with open("e:/ecc/index.html", "w", encoding="utf-8") as f:
     f.write(new_html)
 
 print("Updated index.html")
+
+

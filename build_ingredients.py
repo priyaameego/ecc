@@ -228,7 +228,9 @@ html_head = """<!DOCTYPE html>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="font-serif text-2xl font-bold tracking-wider text-white hover:text-gold-400 transition-colors">THE HANURAAM</a>
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain">
+                    </a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-300 hover:text-gold-400 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
@@ -308,7 +310,7 @@ for i, ing in enumerate(ingredients):
                 <h4 class="text-white font-serif text-lg tracking-wide">{prod['name']}</h4>
                 <div class="flex justify-between items-center mt-auto pt-2">
                     <span class="text-gold-400 font-semibold">{prod['price']}</span>
-                    <button class="text-xs uppercase tracking-widest text-white hover:text-gold-400 transition-colors"><i class="fas fa-shopping-bag mr-1"></i> Add</button>
+                    <button class="bg-transparent border border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-dark py-1.5 px-3 rounded-lg text-xs uppercase tracking-widest font-semibold transition-colors duration-300 ml-2 whitespace-nowrap" onclick="addToCart('{prod['name']}', parseInt('{prod['price']}'.replace('₹','').replace(',','')))"><i class="fas fa-shopping-bag mr-1"></i> Add to Cart</button>
                 </div>
             </div>
         '''
@@ -384,7 +386,9 @@ html_footer = """
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="font-serif text-2xl font-bold tracking-wider text-white mb-4 inline-block">THE HANURAAM</a>
+                    <a href="index.html" class="mb-4 inline-block">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-16 object-contain">
+                    </a>
                     <p class="text-gray-400 mb-6 font-serif italic">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
                 </div>
                 <div>
@@ -428,6 +432,30 @@ html_footer = """
                 nav.classList.remove('bg-primary-900/95', 'shadow-lg');
             }
         });
+
+        let cartCount = 0;
+        function addToCart(product, price) {
+            cartCount++;
+            document.querySelectorAll('a[href="cart.html"] span.absolute').forEach(el => {
+                el.textContent = cartCount;
+                el.classList.add('scale-125');
+                setTimeout(() => el.classList.remove('scale-125'), 200);
+            });
+            // Show toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 right-4 bg-gold-500 border border-gold-600 text-primary-900 font-semibold px-6 py-3 rounded-lg z-[100] shadow-xl transform translate-y-full opacity-0 transition-all duration-300';
+            toast.innerHTML = `<i class="fas fa-check-circle text-primary-900 mr-2"></i> Added ${product} to cart`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-full', 'opacity-0');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-full', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>

@@ -174,6 +174,9 @@ html_head = r'''<!DOCTYPE html>
         ::-webkit-scrollbar-track { background: #163A2F; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #c59d29; }
+        
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -181,13 +184,27 @@ html_head = r'''<!DOCTYPE html>
 </head>
 <body class="antialiased bg-earth-50 text-charcoal-900 selection:bg-gold-500 selection:text-primary-900 overflow-x-hidden">
 
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-500 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max font-medium tracking-wide">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
-                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                  ">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                    ">About</a>
                     <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
                 </div>
                 
@@ -223,7 +240,7 @@ html_head = r'''<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
-                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
                 <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Ingredients</a>
                 <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
@@ -234,8 +251,8 @@ html_head = r'''<!DOCTYPE html>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden parallax-bg" style="background-image: url('assets/hero_bg.png');">
-        <div class="absolute inset-0 bg-earth-50/80 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-primary-900/80 to-primary-900 z-0"></div>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden parallax-bg bg-charcoal-900" style="background-image: url('assets/hero_bg.png'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-black/40 z-0"></div>
         
         <!-- Floating Elements -->
         <img src="assets/botanical_ashwagandha.png" alt="Herb" class="absolute top-1/4 left-10 w-48 md:w-80 opacity-20 rotate-[-15deg] mix-blend-screen blur-[2px]" data-aos="fade-right" data-aos-duration="2000">
@@ -243,10 +260,10 @@ html_head = r'''<!DOCTYPE html>
         
         <div class="relative z-10 text-center max-w-4xl mx-auto px-4 pt-20">
             <span class="inline-block py-1 px-4 border border-gold-400/30 rounded-full text-gold-400 text-xs tracking-[0.3em] uppercase mb-8" data-aos="fade-down">Materia Medica</span>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight" data-aos="zoom-in" data-aos-delay="100">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight text-white" data-aos="zoom-in" data-aos-delay="100">
                 Nature's <br/><span class="text-gradient-gold italic">Masterpieces</span>
             </h1>
-            <p class="text-lg md:text-xl text-primary-900/70 font-light leading-relaxed max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200">
                 Discover the pure, potent botanical sources and ancient wisdom behind THE HANURAAM WELLNESS formulations. Each ingredient is a luxurious gift from the earth, meticulously sourced and scientifically validated.
             </p>
             <div data-aos="fade-up" data-aos-delay="300">

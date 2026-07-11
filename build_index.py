@@ -151,7 +151,7 @@ html_content = f"""<!DOCTYPE html>
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Home</a>
-                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                  ">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                    ">About</a>
                     <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
                 </div>
                 
@@ -187,7 +187,7 @@ html_content = f"""<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Home</a>
-                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
                 <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
                 <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>

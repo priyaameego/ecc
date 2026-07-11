@@ -511,7 +511,7 @@ html_content = """<!DOCTYPE html>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <!-- Brand -->
                 <div class="col-span-1 md:col-span-1">
-                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 mb-6 brightness-0 invert">
+                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-16 mb-6 object-contain bg-white/10 p-2 rounded-lg">
                     <p class="text-sm leading-relaxed mb-6">World-class Ayurvedic formulations crafted for the modern lifestyle. Purity, Potency, and Performance.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>

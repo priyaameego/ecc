@@ -11,7 +11,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' },
+                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' }, /* Forest Essentials inspired Green */
                         gold: { 400: '#F5E6A3', 500: '#E3C16F', 600: '#C9A84C' },
                         earth: { 50: '#FDFBF7', 100: '#F8F5EE', 200: '#F3EFE4' },
                         brown: { 800: '#6E4E37' },
@@ -30,9 +30,15 @@
         @layer utilities {
             .glass { @apply bg-white/80 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)]; }
             .glass-card { @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)] hover:border-gold-500/50 hover:bg-white hover:-translate-y-2 transition-all duration-300; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 to-gold-500; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 to-gold-500; }
         }
         body { @apply bg-earth-100 text-dark font-sans overflow-x-hidden; }
         h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -41,8 +47,6 @@
             animation: marquee 25s linear infinite;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="antialiased">
 

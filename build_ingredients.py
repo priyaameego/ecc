@@ -153,6 +153,66 @@ ingredients = [
         "products": [
             {"name": "IMMUNITY BLEND", "img": "assets/cat_immunity.png", "price": "₹1,299"}
         ]
+    },
+    {
+        "num": "09",
+        "name": "CURCUMIN EXTRACT",
+        "scientific": "Curcuma longa",
+        "image": "assets/botanical_curcumin.png",
+        "source": "Derived from the root of Turmeric (Curcuma longa), nature's gold standard for joint health.",
+        "compounds": "Naturally rich in Curcuminoids, its key active compounds.",
+        "heritage": "Clinically researched botanical with scientifically trusted performance.",
+        "uses": "Provides anti-inflammatory support, antioxidant protection, and supports joint mobility.",
+        "benefits": [
+            "Helps support a healthy inflammatory response.",
+            "Promotes joint comfort and flexibility.",
+            "Provides powerful antioxidant protection.",
+            "Supports cartilage and connective tissue health.",
+            "Backed by extensive scientific research."
+        ],
+        "products": [
+            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
+        ]
+    },
+    {
+        "num": "10",
+        "name": "BOSWELLIA SERRATA EXTRACT",
+        "scientific": "Boswellia serrata",
+        "image": "assets/botanical_boswellia.png",
+        "source": "Derived from Boswellia serrata resin (Indian Frankincense).",
+        "compounds": "Main compounds are Boswellic Acids (AKBA & KBA).",
+        "heritage": "Used in Ayurveda for centuries as a pure botanical.",
+        "uses": "Helps the body handle swelling and inflammation, protecting cells.",
+        "benefits": [
+            "Comes from the resin of the Boswellia serrata tree.",
+            "Contains natural compounds called Boswellic Acids.",
+            "Helps the body handle swelling and inflammation.",
+            "Protects cells from damage caused by free radicals.",
+            "Supports easy movement and flexible joints."
+        ],
+        "products": [
+            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
+        ]
+    },
+    {
+        "num": "11",
+        "name": "SALIX ALBA BARK EXTRACT",
+        "scientific": "Salix alba",
+        "image": "assets/botanical_salix_alba.png",
+        "source": "Derived from the bark of the Salix alba tree (White Willow).",
+        "compounds": "Naturally contains Salicin - a plant-based compound.",
+        "heritage": "Traditionally used in herbal practices for comfort and wellness.",
+        "uses": "Traditionally used in herbal practices for body comfort.",
+        "benefits": [
+            "Comes from the bark of the White Willow tree.",
+            "Contains Salicin, a natural plant compound.",
+            "Traditionally used in herbal practices for body comfort.",
+            "Supports the body's natural response to everyday stress and strain.",
+            "A well-known botanical used for generations."
+        ],
+        "products": [
+            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
+        ]
     }
 ]
 
@@ -169,9 +229,12 @@ html_head = """<!DOCTYPE html>
             theme: {
                 extend: {
                     colors: {
-                        primary: { 900: '#0f291f', 800: '#1F4D3B', 700: '#2E5E4E' },
+                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' }, /* Forest Essentials inspired Green */
                         gold: { 400: '#F5E6A3', 500: '#E3C16F', 600: '#C9A84C' },
-                        dark: '#0A0A0A'
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EE', 200: '#F3EFE4' },
+                        brown: { 800: '#6E4E37' },
+                        olive: { 600: '#7A8450' },
+                        dark: '#1D1D1D'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -181,12 +244,9 @@ html_head = """<!DOCTYPE html>
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style type="text/tailwindcss">
         @layer utilities {
-            .glass { @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]; }
+            .glass { @apply bg-white/80 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)]; }
             .glass-card { @apply bg-white/5 backdrop-blur-md border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] hover:border-gold-500/40 transition-all duration-500; }
             .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 to-gold-400; }
             .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 to-gold-500; }
@@ -220,11 +280,37 @@ html_head = """<!DOCTYPE html>
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+        }
+    </style>
 </head>
 <body class="antialiased selection:bg-gold-500 selection:text-primary-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-800 via-primary-900 to-[#050f0b]">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/10 transition-all duration-300 bg-primary-900/80">
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-400 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
@@ -233,35 +319,37 @@ html_head = """<!DOCTYPE html>
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-300 hover:text-gold-400 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
-                    <a href="about.html" class="text-gray-300 hover:text-gold-400 transition-colors uppercase text-sm tracking-wider font-medium">About</a>
-                    <a href="products.html" class="text-gray-300 hover:text-gold-400 transition-colors uppercase text-sm tracking-wider font-medium">Products</a>
-                    <a href="ingredients.html" class="text-gold-400 border-b-2 border-gold-400 pb-1 uppercase text-sm tracking-wider font-medium">Ingredients</a>
-                    <a href="contact.html" class="text-gray-300 hover:text-gold-400 transition-colors uppercase text-sm tracking-wider font-medium">Contact</a>
-                    <a href="cart.html" class="text-white hover:text-gold-400 transition-colors relative">
+                    <a href="index.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
+                    <a href="about.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">About</a>
+                    <a href="products.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Products</a>
+                    <a href="ingredients.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium border-b-2 border-primary-900 pb-1">Ingredients</a>
+                    <a href="certifications.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Certifications</a>
+                    <a href="contact.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Contact</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative">
                         <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-gold-500 text-primary-900 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
                     </a>
                 </div>
                 <div class="md:hidden flex items-center space-x-4">
-                    <a href="cart.html" class="text-white relative">
+                    <a href="cart.html" class="text-primary-900 relative">
                         <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-gold-500 text-primary-900 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
                     </a>
-                    <button id="mobile-menu-btn" class="text-white hover:text-gold-400 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 bg-primary-900/95">
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400">About</a>
-                <a href="products.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400">Products</a>
-                <a href="ingredients.html" class="block px-3 py-2 text-base font-medium text-gold-400 border-l-4 border-gold-400 bg-white/5">Ingredients</a>
-                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400">Contact</a>
+                <a href="index.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">About</a>
+                <a href="products.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Products</a>
+                <a href="ingredients.html" class="block px-3 py-2 text-base font-medium text-primary-900 border-l-4 border-primary-900">Ingredients</a>
+                <a href="certifications.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Certifications</a>
+                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Contact</a>
             </div>
         </div>
     </nav>
@@ -382,33 +470,51 @@ for i, ing in enumerate(ingredients):
 
 html_footer = """
     <!-- Footer -->
-    <footer class="bg-[#050f0b] pt-16 pb-8 border-t border-white/5">
+    <footer class="bg-primary-900 pt-20 pb-10 border-t-8 border-gold-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="mb-4 inline-block">
-                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-16 object-contain">
-                    </a>
-                    <p class="text-gray-400 mb-6 font-serif italic">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
+                    <p class="text-white/80 font-serif italic mb-6 max-w-md text-lg">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
+                    <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                        A premium luxury Ayurvedic wellness brand dedicated to bringing you the purest, most potent herbal formulations inspired by ancient royal traditions and backed by modern science.
+                    </p>
                 </div>
+                <!-- Links -->
                 <div>
-                    <h4 class="text-gold-500 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Explore</h4>
-                    <ul class="space-y-3">
-                        <li><a href="about.html" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Our Story</a></li>
-                        <li><a href="products.html" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Shop</a></li>
-                        <li><a href="ingredients.html" class="text-gray-400 hover:text-gold-400 transition-colors text-sm">Ingredients</a></li>
+                    <h4 class="text-gold-400 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Explore</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Our Heritage</a></li>
+                        <li><a href="products.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Shop Collection</a></li>
+                        <li><a href="ingredients.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Ayurvedic Ingredients</a></li>
+                        <li><a href="certifications.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Certifications</a></li>
+                        <li><a href="contact.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
                     </ul>
                 </div>
+                <!-- Contact & Social -->
                 <div>
-                    <h4 class="text-gold-500 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Connect</h4>
+                    <h4 class="text-gold-400 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Connect</h4>
+                    <ul class="space-y-4 text-white/70 text-sm mb-8">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-gold-500"></i> New Delhi, India</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-gold-500"></i> wellness@hanuraam.com</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-3 text-gold-500"></i> +91 98765 43210</li>
+                    </ul>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-gold-400 transition-all"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-gold-400 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/40 text-xs mb-4 md:mb-0">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+                <div class="flex space-x-6 text-xs text-white/40">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Shipping & Returns</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -425,11 +531,11 @@ html_footer = """
         window.addEventListener('scroll', function() {
             var nav = document.querySelector('nav');
             if (window.scrollY > 10) {
-                nav.classList.add('bg-primary-900/95', 'shadow-lg');
-                nav.classList.remove('bg-primary-900/80');
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('glass');
             } else {
-                nav.classList.add('bg-primary-900/80');
-                nav.classList.remove('bg-primary-900/95', 'shadow-lg');
+                nav.classList.add('glass');
+                nav.classList.remove('bg-white/95');
             }
         });
 

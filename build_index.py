@@ -151,7 +151,7 @@ html_content = f"""<!DOCTYPE html>
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Home</a>
-                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium               ">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                ">About</a>
                     <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
                 </div>
                 
@@ -187,7 +187,7 @@ html_content = f"""<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Home</a>
-                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
                 <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
                 <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
@@ -198,7 +198,7 @@ html_content = f"""<!DOCTYPE html>
     </nav>
 
     <!-- 1. Fullscreen Hero -->
-    <header class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-earth-50">
+    <header class="relative min-h-screen md:h-screen md:min-h-[700px] flex flex-col justify-center overflow-hidden bg-earth-50 pt-32 pb-16 md:pt-0 md:pb-0">
         <!-- Background Elements -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-radial from-earth-100 to-earth-50"></div>
@@ -214,8 +214,8 @@ html_content = f"""<!DOCTYPE html>
             <img src="assets/botanical_ginseng.png" alt="Leaf" class="absolute bottom-1/4 right-10 w-64 opacity-40 animate-float-delayed">
         </div>
         
-        <div class="relative z-20 w-full max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 text-center md:text-left pt-20 md:pt-0" data-aos="fade-right" data-aos-duration="1500">
+        <div class="relative z-20 w-full max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between flex-1">
+            <div class="md:w-1/2 text-center md:text-left pt-10 md:pt-0" data-aos="fade-right" data-aos-duration="1500">
                 <span class="text-gold-600 uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Redefining Ayurveda</span>
                 <h1 class="text-5xl md:text-7xl font-serif text-primary-900 mb-6 leading-tight">Elevate Your<br><span class="italic text-charcoal-900">Vitality.</span></h1>
                 <p class="text-lg text-charcoal-900/70 font-light mb-10 max-w-lg mx-auto md:mx-0">

@@ -1,4 +1,57 @@
-<!DOCTYPE html>
+import os
+
+products = [
+    {"id": "kordy_x", "name": "KORDY X", "price": "1,499", "old_price": "1,999", "image": "prod_kordy_x.png", "desc": "Premium Vitality & Stamina Blend", "rating": "4.9", "reviews": "128", "badge": "Bestseller"},
+    {"id": "ashwagandha", "name": "Ashwagandha Plus", "price": "899", "old_price": "1,299", "image": "prod_ashwagandha.png", "desc": "Stress Relief & Calmness", "rating": "4.8", "reviews": "95", "badge": "High Absorption"},
+    {"id": "shilajit", "name": "Shilajit Gold", "price": "1,899", "old_price": "2,499", "image": "prod_shilajit.png", "desc": "Pure Himalayan Resin", "rating": "5.0", "reviews": "210", "badge": "Premium"},
+    {"id": "gokshura", "name": "Gokshura Power", "price": "799", "old_price": "1,099", "image": "prod_gokshura.png", "desc": "Muscle Recovery & Vigor", "rating": "4.7", "reviews": "82", "badge": ""},
+    {"id": "ginseng", "name": "Panax Ginseng", "price": "1,199", "old_price": "1,599", "image": "prod_ginseng.png", "desc": "Cognitive Focus & Energy", "rating": "4.9", "reviews": "115", "badge": "New"},
+    {"id": "chaste", "name": "Chaste Tree Blend", "price": "949", "old_price": "1,399", "image": "prod_chaste.png", "desc": "Women's Hormonal Balance", "rating": "4.8", "reviews": "90", "badge": ""},
+    {"id": "joyflex", "name": "Joyflex Joints", "price": "1,099", "old_price": "1,499", "image": "prod_joyflex.png", "desc": "Joint Mobility & Flexibility", "rating": "4.9", "reviews": "154", "badge": "Clinically Proven"}
+]
+
+# Generate products HTML
+products_html = ""
+for p in products:
+    badge_html = f'<div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">{p["badge"]}</div>' if p["badge"] else ''
+    products_html += f"""
+                <div class="group" data-aos="fade-up">
+                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
+                        {badge_html}
+                        <!-- Wishlist -->
+                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
+                            <i class="fas fa-heart text-sm"></i>
+                        </button>
+                        
+                        <div class="relative h-64 flex items-center justify-center mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                            <img src="assets/{p['image']}" alt="{p['name']}" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
+                        </div>
+                        
+                        <!-- Quick Actions Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
+                            <a href="product_{p['id']}.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
+                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="text-center px-2">
+                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="text-charcoal-900/50 font-sans ml-1">({p['reviews']})</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_{p['id']}.html">{p['name']}</a></h3>
+                        <p class="text-charcoal-900/60 text-xs font-light mb-3">{p['desc']}</p>
+                        <div class="flex justify-center items-center gap-3">
+                            <span class="font-medium text-primary-900">₹{p['price']}</span>
+                            <span class="text-charcoal-900/40 line-through text-sm">₹{p['old_price']}</span>
+                        </div>
+                    </div>
+                </div>
+"""
+
+html_content = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -7,55 +60,55 @@
     <meta name="description" content="Discover world-class luxury Ayurvedic formulations. Where Ancient Wisdom Meets Modern Science.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' },
-                        gold: { 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' },
-                        earth: { 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' },
-                        charcoal: { 800: '#2D2D2D', 900: '#1C1C1C' },
-                    },
-                    fontFamily: {
+        tailwind.config = {{
+            theme: {{
+                extend: {{
+                    colors: {{
+                        primary: {{ 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' }},
+                        gold: {{ 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' }},
+                        earth: {{ 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' }},
+                        charcoal: {{ 800: '#2D2D2D', 900: '#1C1C1C' }},
+                    }},
+                    fontFamily: {{
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
-                    },
-                    animation: {
+                    }},
+                    animation: {{
                         'float': 'float 8s ease-in-out infinite',
                         'float-delayed': 'float 8s ease-in-out 4s infinite',
                         'spin-slow': 'spin 20s linear infinite',
                         'scroll': 'scrollDown 2s infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(0)' },
-                            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
-                        },
-                        scrollDown: {
-                            '0%': { transform: 'translateY(0)', opacity: 1 },
-                            '100%': { transform: 'translateY(15px)', opacity: 0 },
-                        }
-                    }
-                }
-            }
-        }
+                    }},
+                    keyframes: {{
+                        float: {{
+                            '0%, 100%': {{ transform: 'translateY(0) rotate(0)' }},
+                            '50%': {{ transform: 'translateY(-20px) rotate(5deg)' }},
+                        }},
+                        scrollDown: {{
+                            '0%': {{ transform: 'translateY(0)', opacity: 1 }},
+                            '100%': {{ transform: 'translateY(15px)', opacity: 0 }},
+                        }}
+                    }}
+                }}
+            }}
+        }}
     </script>
     <style type="text/tailwindcss">
-        @layer utilities {
-            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }
-            .glass-dark { @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
-            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
-            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
-        }
-        body { @apply bg-earth-50 text-charcoal-900 font-sans overflow-x-hidden; }
-        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+        @layer utilities {{
+            .glass {{ @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }}
+            .glass-dark {{ @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }}
+            .text-gradient-gold {{ @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }}
+            .bg-gradient-gold {{ @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }}
+        }}
+        body {{ @apply bg-earth-50 text-charcoal-900 font-sans overflow-x-hidden; }}
+        h1, h2, h3, h4, h5, h6 {{ @apply font-serif text-primary-900; }}
         
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #F8F5EF; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+        ::-webkit-scrollbar {{ width: 8px; }}
+        ::-webkit-scrollbar-track {{ background: #F8F5EF; }}
+        ::-webkit-scrollbar-thumb {{ background: #D4AF37; border-radius: 4px; }}
+        ::-webkit-scrollbar-thumb:hover {{ background: #C9A84C; }}
         
-        .bg-grain {
+        .bg-grain {{
             position: absolute;
             inset: 0;
             background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
@@ -63,14 +116,14 @@
             mix-blend-mode: multiply;
             pointer-events: none;
             z-index: 10;
-        }
+        }}
         
         /* Hide scrollbar for horizontal scrolling */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .no-scrollbar::-webkit-scrollbar {{ display: none; }}
+        .no-scrollbar {{ -ms-overflow-style: none; scrollbar-width: none; }}
         
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 25s linear infinite; }
+        @keyframes marquee {{ 0% {{ transform: translateX(0); }} 100% {{ transform: translateX(-50%); }} }}
+        .animate-marquee {{ animation: marquee 25s linear infinite; }}
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -187,7 +240,7 @@
         </div>
         
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer" onclick="window.scrollTo({{top: window.innerHeight, behavior: 'smooth'}})">
             <span class="text-primary-900/50 text-[10px] uppercase tracking-widest mb-2 font-bold">Scroll</span>
             <div class="w-px h-12 bg-primary-900/20 relative overflow-hidden">
                 <div class="w-full h-1/2 bg-primary-900 animate-scroll"></div>
@@ -300,252 +353,7 @@
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-                
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">Bestseller</div>
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_kordy_x.png" alt="KORDY X" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_kordy_x.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(128)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_kordy_x.html">KORDY X</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Premium Vitality & Stamina Blend</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹1,499</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,999</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">High Absorption</div>
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_ashwagandha.png" alt="Ashwagandha Plus" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_ashwagandha.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(95)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_ashwagandha.html">Ashwagandha Plus</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Stress Relief & Calmness</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹899</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,299</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">Premium</div>
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_shilajit.png" alt="Shilajit Gold" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_shilajit.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(210)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_shilajit.html">Shilajit Gold</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Pure Himalayan Resin</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹1,899</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹2,499</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_gokshura.png" alt="Gokshura Power" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_gokshura.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(82)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_gokshura.html">Gokshura Power</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Muscle Recovery & Vigor</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹799</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,099</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">New</div>
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_ginseng.png" alt="Panax Ginseng" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_ginseng.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(115)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_ginseng.html">Panax Ginseng</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Cognitive Focus & Energy</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹1,199</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,599</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_chaste.png" alt="Chaste Tree Blend" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_chaste.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(90)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_chaste.html">Chaste Tree Blend</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Women's Hormonal Balance</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹949</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,399</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group" data-aos="fade-up">
-                    <div class="relative bg-earth-100 rounded-2xl p-6 mb-6 transition-all duration-500 overflow-hidden group-hover:shadow-[0_20px_40px_rgba(22,58,47,0.08)]">
-                        <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold text-primary-900 uppercase tracking-widest shadow-md z-10">Clinically Proven</div>
-                        <!-- Wishlist -->
-                        <button class="absolute top-4 right-4 w-8 h-8 bg-white/50 backdrop-blur-sm rounded-full flex items-center justify-center text-charcoal-900/40 hover:text-gold-500 hover:bg-white transition-all z-10">
-                            <i class="fas fa-heart text-sm"></i>
-                        </button>
-                        
-                        <div class="relative h-64 flex items-center justify-center mb-4">
-                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                            <img src="assets/prod_joyflex.png" alt="Joyflex Joints" class="h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10 filter drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)]">
-                        </div>
-                        
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute bottom-4 left-4 right-4 translate-y-0 opacity-100 md:translate-y-12 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-300 z-20 flex gap-2">
-                            <a href="product_joyflex.html" class="flex-1 bg-white text-primary-900 font-semibold text-xs uppercase tracking-widest py-3 rounded-full hover:bg-earth-50 transition-colors shadow-lg flex items-center justify-center">Quick View</a>
-                            <a href="cart.html" class="w-12 flex-shrink-0 h-12 bg-primary-900 text-gold-400 rounded-full flex items-center justify-center hover:bg-primary-800 transition-colors shadow-lg"><i class="fas fa-shopping-bag"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Details -->
-                    <div class="text-center px-2">
-                        <div class="flex justify-center items-center gap-1 text-gold-500 text-[10px] mb-2">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-charcoal-900/50 font-sans ml-1">(154)</span>
-                        </div>
-                        <h3 class="font-serif text-xl text-primary-900 mb-1 group-hover:text-gold-600 transition-colors"><a href="product_joyflex.html">Joyflex Joints</a></h3>
-                        <p class="text-charcoal-900/60 text-xs font-light mb-3">Joint Mobility & Flexibility</p>
-                        <div class="flex justify-center items-center gap-3">
-                            <span class="font-medium text-primary-900">₹1,099</span>
-                            <span class="text-charcoal-900/40 line-through text-sm">₹1,499</span>
-                        </div>
-                    </div>
-                </div>
-
+                {products_html}
             </div>
             
             <div class="mt-12 text-center md:hidden">
@@ -679,7 +487,7 @@
     </section>
 
     <!-- 16. Premium Footer -->
-    <footer class="bg-primary-900 text-white/70 pt-20 pb-10 border-t border-gold-500/20 relative z-10">
+    <footer class="bg-charcoal-900 text-white/70 pt-20 pb-10 relative z-10 border-t border-gold-500/20">
         <div class="bg-grain"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -698,10 +506,10 @@
                 <div>
                     <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="hover:text-gold-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="index.html" class="text-gold-400 text-sm">Home</a></li>
                         <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
                         <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
-                        <li><a href="about.html" class="text-gold-400 text-sm">About Us</a></li>
+                        <li><a href="about.html" class="hover:text-gold-400 transition-colors text-sm">About Us</a></li>
                     </ul>
                 </div>
                 
@@ -716,14 +524,23 @@
                     </ul>
                 </div>
                 
-                <!-- Newsletter -->
+                <!-- Payment Badges -->
                 <div>
-                    <h4 class="text-white font-serif text-lg mb-6">Join The Club</h4>
-                    <p class="text-sm mb-4">Subscribe to receive exclusive offers, Ayurvedic wellness tips, and early access to new launches.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email address" class="bg-white/5 border border-white/20 rounded-l-lg px-4 py-3 w-full text-white text-sm focus:outline-none focus:border-gold-500">
-                        <button type="button" class="bg-gold-500 text-primary-900 px-4 py-3 rounded-r-lg hover:bg-gold-400 transition-colors"><i class="fas fa-arrow-right"></i></button>
-                    </form>
+                    <h4 class="text-white font-serif text-lg mb-6">Secure Checkout</h4>
+                    <div class="flex flex-wrap gap-2 text-2xl text-white/50">
+                        <i class="fab fa-cc-visa hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-mastercard hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-amex hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-paypal hover:text-white transition-colors"></i>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-white font-serif text-lg mb-4">Certifications</h4>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">GMP</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">FSSAI</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">AYUSH</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -740,22 +557,27 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize Animations
-        AOS.init({
+        AOS.init({{
             once: true,
             offset: 50,
             duration: 800,
             easing: 'ease-out-cubic',
-        });
+        }});
         
         // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {{
             var menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
+            if (menu.classList.contains('hidden')) {{
                 menu.classList.remove('hidden');
-            } else {
+            }} else {{
                 menu.classList.add('hidden');
-            }
-        });
+            }}
+        }});
     </script>
 </body>
-</html>
+</html>"""
+
+with open("e:/ecc/index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Generated index.html successfully!")

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gokshura Power - Premium Product Details | THE HANURAAM WELLNESS</title>
+    <meta name="description" content="KORDY X Premium Ayurvedic Effervescent Formulation. Ultimate Vitality and Power.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' }, /* Deep Forest Green */
+                        gold: { 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' }, /* Luxury Gold */
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' }, /* Warm Ivory */
+                        charcoal: { 800: '#2D2D2D', 900: '#1C1C1C' }, /* Dark Charcoal */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-gold': 'pulseGold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGold: {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
+                            '50%': { opacity: .8, boxShadow: '0 0 0 10px rgba(212, 175, 55, 0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }
+            .glass-dark { @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
+            .glass-card { @apply bg-white/60 backdrop-blur-md border border-white/50 shadow-xl hover:border-gold-500/50 hover:bg-white hover:-translate-y-2 transition-all duration-500; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+        }
+        body { @apply bg-earth-100 text-charcoal-900 font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F5EF; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+        
+        /* Hide Number Input Arrows */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; }
+        
+        /* Accordion */
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-500 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max font-medium tracking-wide">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 relative">
+                <div class="hidden md:flex space-x-8 items-center w-1/3">
+                    <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
+                    <a href="about.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">About</a>
+                    <a href="products.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Products</a>
+                </div>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain hover:scale-105 transition-transform duration-500">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center justify-end w-1/3">
+                    <a href="ingredients.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Ingredients</a>
+                    <a href="contact.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Contact</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative group">
+                        <i class="fas fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
+                    </a>
+                </div>
+                
+                <div class="md:hidden flex items-center space-x-4 ml-auto">
+                    <a href="cart.html" class="text-primary-900 relative">
+                        <i class="fas fa-shopping-bag text-xl"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-primary-900 border-b border-primary-900/10 font-bold">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="pt-40 pb-20 relative overflow-hidden bg-earth-50">
+        <!-- Floating background elements -->
+        <div class="absolute top-40 -left-20 w-64 h-64 bg-gold-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-primary-900/5 rounded-full blur-3xl"></div>
+        <i class="fas fa-leaf absolute top-1/4 left-10 text-primary-900/5 text-6xl -rotate-45 animate-float"></i>
+        <i class="fas fa-seedling absolute bottom-1/4 right-20 text-gold-500/10 text-8xl rotate-12 animate-float-delayed"></i>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Left: 3D Product Image -->
+                <div class="relative group perspective-1000">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-earth-200 to-transparent rounded-3xl transform rotate-3 scale-105 group-hover:rotate-1 transition-all duration-700"></div>
+                    <div class="relative glass rounded-3xl p-12 flex items-center justify-center transform group-hover:-translate-y-2 group-hover:shadow-2xl transition-all duration-700">
+                        <img src="assets/prod_gokshura.png" alt="Gokshura Power" class="w-full max-w-sm h-auto object-contain drop-shadow-2xl animate-float">
+                        <!-- Badge -->
+                        <div class="absolute top-6 left-6 bg-primary-900 text-gold-400 text-xs px-4 py-1.5 rounded-full uppercase tracking-widest font-semibold border border-gold-500/30">Premium Quality</div>
+                        <div class="absolute bottom-6 right-6 flex space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-gold-500 shadow-[0_0_10px_rgba(212,175,55,0.8)]"></span>
+                            <span class="w-3 h-3 rounded-full bg-gold-500/30"></span>
+                            <span class="w-3 h-3 rounded-full bg-gold-500/30"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Product Info -->
+                <div class="flex flex-col space-y-6">
+                    <div>
+                        <div class="text-gold-600 uppercase tracking-[0.2em] text-xs font-semibold mb-3">Vitality & Power Collection</div>
+                        <h1 class="text-5xl md:text-6xl font-serif text-primary-900 leading-tight mb-2">Gokshura Power</h1>
+                        
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="flex text-gold-500 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <a href="#reviews" class="text-sm text-charcoal-900/60 hover:text-gold-600 underline underline-offset-4 transition-colors">4.9 (128 Reviews)</a>
+                        </div>
+                        
+                        <p class="text-lg text-charcoal-900/80 font-light leading-relaxed">
+                            Male Vitality Support. Harness the power of pure Gokshura extract to naturally support stamina, muscle recovery, and overall physical performance.
+                        </p>
+                    </div>
+
+                    <div class="w-full h-px bg-gradient-to-r from-primary-900/20 via-primary-900/10 to-transparent"></div>
+
+                    <div class="flex items-end space-x-4">
+                        <span class="text-4xl font-serif text-primary-900">₹1,799</span>
+                        <span class="text-xl text-charcoal-900/40 line-through mb-1">₹2,299</span>
+                        <span class="bg-gold-100 text-gold-600 text-xs font-bold px-2 py-1 rounded-sm uppercase tracking-widest mb-2 border border-gold-200">Save 25%</span>
+                    </div>
+
+                    <!-- Trust Badges Mini -->
+                    <div class="flex space-x-6 text-xs text-primary-900/70 font-medium pb-2">
+                        <div class="flex items-center"><i class="fas fa-leaf text-gold-500 mr-2 text-lg"></i> 100% Natural</div>
+                        <div class="flex items-center"><i class="fas fa-flask text-gold-500 mr-2 text-lg"></i> Lab Tested</div>
+                        <div class="flex items-center"><i class="fas fa-ban text-gold-500 mr-2 text-lg"></i> No Toxins</div>
+                    </div>
+
+                    <!-- Add to Cart Actions -->
+                    <div class="flex flex-col gap-4 pt-2">
+                        <div class="flex items-center gap-4 w-full">
+                            <!-- Quantity -->
+                            <div class="flex items-center justify-between border border-primary-900/30 rounded-full bg-white overflow-hidden w-32 px-1 h-14 shadow-sm flex-shrink-0">
+                                <button class="w-10 h-10 flex items-center justify-center text-primary-900 hover:bg-earth-100 rounded-full transition-colors" onclick="updateQty(-1)"><i class="fas fa-minus text-xs"></i></button>
+                                <input type="number" id="qty" value="1" min="1" class="w-10 text-center bg-transparent font-medium focus:outline-none pointer-events-none text-lg text-primary-900" readonly>
+                                <button class="w-10 h-10 flex items-center justify-center text-primary-900 hover:bg-earth-100 rounded-full transition-colors" onclick="updateQty(1)"><i class="fas fa-plus text-xs"></i></button>
+                            </div>
+                            
+                            <!-- Add to Cart -->
+                            <button onclick="addToCart(this)" class="flex-1 flex justify-center items-center bg-primary-900 text-gold-400 rounded-full h-14 font-semibold uppercase tracking-widest text-xs md:text-sm hover:bg-primary-800 transition-all duration-300 shadow-[0_10px_20px_rgba(22,58,47,0.2)] hover:shadow-[0_15px_30px_rgba(22,58,47,0.3)] hover:-translate-y-1 relative overflow-hidden group">
+                                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                                <span class="relative z-10 flex items-center justify-center"><i class="fas fa-shopping-bag mr-2 md:mr-3"></i> Add to Cart</span>
+                            </button>
+                        </div>
+                        
+                        <a href="cart.html" class="w-full flex justify-center items-center bg-gradient-gold text-primary-900 rounded-full h-14 font-bold uppercase tracking-widest text-xs md:text-sm hover:shadow-[0_15px_30px_rgba(212,175,55,0.3)] shadow-[0_10px_20px_rgba(212,175,55,0.2)] transition-all duration-300 hover:-translate-y-1">
+                            Buy It Now
+                        </a>
+                    </div>
+
+                    <p class="text-[11px] text-center sm:text-left text-charcoal-900/50 uppercase tracking-widest pt-2"><i class="fas fa-clock mr-1"></i> Dispatches within 24 hours. Free Shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Why Choose This Product (Premium Cards) -->
+    <section class="py-24 bg-primary-900 relative overflow-hidden text-white">
+        <!-- Minimal Grid Texture -->
+        <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-gold-400 tracking-[0.2em] uppercase text-xs font-semibold mb-3 block">The Hanuraam Difference</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Why Choose KORDY X?</h2>
+                <div class="w-16 h-px bg-gold-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-dark rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-500 group">
+                    <div class="w-14 h-14 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 text-gold-400 text-2xl group-hover:bg-gold-500 group-hover:text-primary-900 transition-colors duration-500">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-3 text-white">Instant Bioavailability</h3>
+                    <p class="text-white/60 font-light text-sm leading-relaxed">Unlike traditional tablets, our effervescent technology ensures 100% absorption within minutes, bypassing digestive delays for rapid energy.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-dark rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-500 group">
+                    <div class="w-14 h-14 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 text-gold-400 text-2xl group-hover:bg-gold-500 group-hover:text-primary-900 transition-colors duration-500">
+                        <i class="fas fa-vihara"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-3 text-white">Ancient Formulations</h3>
+                    <p class="text-white/60 font-light text-sm leading-relaxed">Sourced from the heart of the Himalayas and crafted using centuries-old Royal Ayurvedic texts combined with modern science.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-dark rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-500 group">
+                    <div class="w-14 h-14 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 text-gold-400 text-2xl group-hover:bg-gold-500 group-hover:text-primary-900 transition-colors duration-500">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-3 text-white">Zero Side Effects</h3>
+                    <p class="text-white/60 font-light text-sm leading-relaxed">Formulated without refined sugars, synthetic chemicals, or artificial preservatives. 100% plant-based and gentle on the stomach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Key Benefits -->
+    <section class="py-24 bg-earth-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Text Content -->
+                <div class="lg:w-1/3">
+                    <span class="text-gold-600 tracking-[0.2em] uppercase text-xs font-semibold mb-3 block">Wellness Reimagined</span>
+                    <h2 class="text-4xl font-serif text-primary-900 mb-6 leading-tight">Elevate Every Aspect of Your Day</h2>
+                    <p class="text-charcoal-900/70 font-light mb-8 leading-relaxed">Experience a profound shift in your physical and mental state. KORDY X targets the root causes of fatigue and stress, providing a holistic uplift to your well-being.</p>
+                    <button class="px-8 py-3 border border-primary-900 text-primary-900 uppercase tracking-widest text-xs font-semibold hover:bg-primary-900 hover:text-gold-400 transition-colors duration-300">Explore Ingredients</button>
+                </div>
+                
+                <!-- Benefits Grid -->
+                <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="glass-card rounded-2xl p-6 group">
+                        <i class="fas fa-battery-full text-3xl text-primary-800 mb-4 group-hover:text-gold-500 transition-colors"></i>
+                        <h4 class="font-serif text-xl text-primary-900 mb-2">Peak Energy Levels</h4>
+                        <p class="text-sm text-charcoal-900/60">Combats chronic fatigue and lethargy naturally without caffeine crashes.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 group mt-0 sm:mt-10">
+                        <i class="fas fa-brain text-3xl text-primary-800 mb-4 group-hover:text-gold-500 transition-colors"></i>
+                        <h4 class="font-serif text-xl text-primary-900 mb-2">Cognitive Clarity</h4>
+                        <p class="text-sm text-charcoal-900/60">Clears brain fog and sharpens focus during high-stress situations.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 group">
+                        <i class="fas fa-heartbeat text-3xl text-primary-800 mb-4 group-hover:text-gold-500 transition-colors"></i>
+                        <h4 class="font-serif text-xl text-primary-900 mb-2">Stamina & Endurance</h4>
+                        <p class="text-sm text-charcoal-900/60">Supports physical performance and faster recovery after exertion.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 group mt-0 sm:mt-10">
+                        <i class="fas fa-spa text-3xl text-primary-800 mb-4 group-hover:text-gold-500 transition-colors"></i>
+                        <h4 class="font-serif text-xl text-primary-900 mb-2">Stress Management</h4>
+                        <p class="text-sm text-charcoal-900/60">Balances cortisol levels to keep you calm and centered all day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Ingredient Spotlight (Timeline) -->
+    <section class="py-24 bg-white border-y border-primary-900/5">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-serif text-primary-900 mb-4">The Golden Trinity</h2>
+                <p class="text-charcoal-900/60 max-w-2xl mx-auto font-light">Three legendary Ayurvedic herbs perfectly balanced in one powerful tablet.</p>
+            </div>
+
+            <div class="space-y-24">
+                <!-- Ingredient 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 relative">
+                        <div class="w-full h-80 rounded-2xl overflow-hidden shadow-2xl relative group">
+                            <img src="assets/botanical_ashwagandha.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Ashwagandha">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-1000"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-serif text-primary-900 mb-1">Ashwagandha Extract</h3>
+                        <p class="italic text-charcoal-900/50 mb-6 font-serif">Withania somnifera (KSM-66)</p>
+                        <p class="text-charcoal-900/80 font-light leading-relaxed mb-6">Known as the "Prince of Herbs", our highly concentrated Ashwagandha extract helps the body manage stress, lowers cortisol levels, and boosts brain function.</p>
+                        <div class="flex items-center text-sm font-semibold text-primary-900 uppercase tracking-widest">
+                            <i class="fas fa-check text-gold-500 mr-2"></i> 5% Withanolides
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredient 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="md:w-1/2 relative">
+                        <div class="w-full h-80 rounded-2xl overflow-hidden shadow-2xl relative group">
+                            <img src="assets/botanical_shilajit.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Shilajit">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-1000"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-serif text-primary-900 mb-1">Himalayan Shilajit</h3>
+                        <p class="italic text-charcoal-900/50 mb-6 font-serif">Asphaltum punjabianum</p>
+                        <p class="text-charcoal-900/80 font-light leading-relaxed mb-6">A sticky resin sourced from the high altitudes of the Himalayas, rich in fulvic acid. It acts as a powerful rejuvenator and carrier of nutrients directly into the cells.</p>
+                        <div class="flex items-center text-sm font-semibold text-primary-900 uppercase tracking-widest">
+                            <i class="fas fa-check text-gold-500 mr-2"></i> 60% Fulvic Acid
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingredient 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 relative">
+                        <div class="w-full h-80 rounded-2xl overflow-hidden shadow-2xl relative group">
+                            <img src="assets/botanical_gokshura.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Gokshura">
+                            <div class="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-1000"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-serif text-primary-900 mb-1">Gokshura</h3>
+                        <p class="italic text-charcoal-900/50 mb-6 font-serif">Tribulus terrestris</p>
+                        <p class="text-charcoal-900/80 font-light leading-relaxed mb-6">A potent herb that naturally supports vitality, improves muscle tone, and balances fluid levels in the body, providing sustained stamina.</p>
+                        <div class="flex items-center text-sm font-semibold text-primary-900 uppercase tracking-widest">
+                            <i class="fas fa-check text-gold-500 mr-2"></i> 40% Saponins
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. How It Works -->
+    <section class="py-24 bg-primary-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif mb-4">The Journey to Vitality</h2>
+                <p class="text-gold-400 font-light">How KORDY X transforms your body from within.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/20 -translate-y-1/2 z-0"></div>
+                
+                <!-- Steps -->
+                <div class="text-center relative z-10">
+                    <div class="w-16 h-16 mx-auto bg-primary-800 border-2 border-gold-500 rounded-full flex items-center justify-center text-xl font-serif text-gold-400 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.3)]">1</div>
+                    <h4 class="text-lg font-serif mb-2">Absorption</h4>
+                    <p class="text-white/50 text-xs leading-relaxed">Effervescent fizz ensures 100% absorption in the stomach lining within 15 minutes.</p>
+                </div>
+                <div class="text-center relative z-10">
+                    <div class="w-16 h-16 mx-auto bg-primary-800 border-2 border-gold-500 rounded-full flex items-center justify-center text-xl font-serif text-gold-400 mb-6">2</div>
+                    <h4 class="text-lg font-serif mb-2">Activation</h4>
+                    <p class="text-white/50 text-xs leading-relaxed">Fulvic acid from Shilajit carries active nutrients directly into deep cellular tissue.</p>
+                </div>
+                <div class="text-center relative z-10">
+                    <div class="w-16 h-16 mx-auto bg-primary-800 border-2 border-gold-500 rounded-full flex items-center justify-center text-xl font-serif text-gold-400 mb-6">3</div>
+                    <h4 class="text-lg font-serif mb-2">Balancing</h4>
+                    <p class="text-white/50 text-xs leading-relaxed">Ashwagandha begins to lower cortisol, reducing internal stress and brain fog.</p>
+                </div>
+                <div class="text-center relative z-10">
+                    <div class="w-16 h-16 mx-auto bg-primary-800 border-2 border-gold-500 rounded-full flex items-center justify-center text-xl font-serif text-gold-400 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.3)]">4</div>
+                    <h4 class="text-lg font-serif mb-2">Vitality</h4>
+                    <p class="text-white/50 text-xs leading-relaxed">Gokshura elevates sustained stamina, giving you peak energy that lasts all day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. How to Use & 7. Who Should Use -->
+    <section class="py-24 bg-earth-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Usage Guide -->
+                <div>
+                    <h2 class="text-3xl font-serif text-primary-900 mb-8">The Ritual of Wellness</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gold-600 shadow-md flex-shrink-0">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="ml-4 pt-1">
+                                <h4 class="text-lg font-bold text-primary-900 mb-1">Drop & Fizz</h4>
+                                <p class="text-charcoal-900/70 text-sm leading-relaxed">Drop 1 tablet in 200ml of room temperature water. Wait for it to completely dissolve (approx. 2 mins).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gold-600 shadow-md flex-shrink-0">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="ml-4 pt-1">
+                                <h4 class="text-lg font-bold text-primary-900 mb-1">Perfect Timing</h4>
+                                <p class="text-charcoal-900/70 text-sm leading-relaxed">Best consumed mid-morning or 30 minutes before physical/mental exertion. Do not consume before bedtime.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-gold-600 shadow-md flex-shrink-0">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="ml-4 pt-1">
+                                <h4 class="text-lg font-bold text-primary-900 mb-1">Consistency is Key</h4>
+                                <p class="text-charcoal-900/70 text-sm leading-relaxed">Consume daily for 90 days for optimal, long-lasting Ayurvedic benefits. Take a 2-week break after 3 months.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Target Audience Cards -->
+                <div class="space-y-6">
+                    <!-- Suitable -->
+                    <div class="bg-white rounded-2xl p-6 border-l-4 border-primary-900 shadow-lg">
+                        <h4 class="flex items-center text-lg font-serif text-primary-900 mb-3">
+                            <i class="fas fa-check-circle text-primary-800 mr-2"></i> Perfect For
+                        </h4>
+                        <ul class="text-sm text-charcoal-900/70 space-y-2">
+                            <li>• Professionals facing high mental stress</li>
+                            <li>• Athletes seeking natural endurance</li>
+                            <li>• Individuals dealing with chronic fatigue</li>
+                            <li>• Adults looking to restore general vitality</li>
+                        </ul>
+                    </div>
+                    <!-- Avoid -->
+                    <div class="bg-earth-50 rounded-2xl p-6 border-l-4 border-red-800/80 shadow-md">
+                        <h4 class="flex items-center text-lg font-serif text-red-900 mb-3">
+                            <i class="fas fa-exclamation-circle text-red-800 mr-2"></i> Consult Physician If
+                        </h4>
+                        <ul class="text-sm text-charcoal-900/70 space-y-2">
+                            <li>• Pregnant or nursing women</li>
+                            <li>• Individuals with severe hypertension</li>
+                            <li>• Minors under the age of 18</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Nutrition Facts Table -->
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-serif text-primary-900 mb-2">Supplement Facts</h2>
+                <p class="text-sm text-charcoal-900/50 uppercase tracking-widest">Serving Size: 1 Tablet (4g)</p>
+            </div>
+            
+            <div class="border-2 border-primary-900/10 rounded-2xl overflow-hidden bg-earth-50">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-primary-900 text-white">
+                            <th class="py-4 px-6 font-serif font-normal">Active Ingredients</th>
+                            <th class="py-4 px-6 font-serif font-normal text-right">Amount per serving</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-primary-900/10 text-charcoal-900/80">
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-medium">Ashwagandha Extract (KSM-66)</td>
+                            <td class="py-4 px-6 text-right">300 mg</td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-medium">Shilajit Extract (Purified)</td>
+                            <td class="py-4 px-6 text-right">250 mg</td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-medium">Gokshura Extract</td>
+                            <td class="py-4 px-6 text-right">200 mg</td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="py-4 px-6 font-medium">Safed Musli Extract</td>
+                            <td class="py-4 px-6 text-right">100 mg</td>
+                        </tr>
+                        <tr class="bg-primary-900/5">
+                            <td class="py-3 px-6 text-xs text-charcoal-900/50" colspan="2">*Daily Value (DV) not established. 100% Vegan. Zero Added Sugar.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Certifications & 10. Stats -->
+    <section class="py-20 bg-primary-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 text-center divide-x divide-white/10">
+                <div>
+                    <div class="text-4xl font-serif text-gold-400 mb-2">50K+</div>
+                    <div class="text-[10px] uppercase tracking-widest text-white/50">Happy Customers</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-serif text-gold-400 mb-2">92%</div>
+                    <div class="text-[10px] uppercase tracking-widest text-white/50">Repeat Rate</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-serif text-gold-400 mb-2">4.9/5</div>
+                    <div class="text-[10px] uppercase tracking-widest text-white/50">Average Rating</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-serif text-gold-400 mb-2">100%</div>
+                    <div class="text-[10px] uppercase tracking-widest text-white/50">Natural Quality</div>
+                </div>
+            </div>
+
+            <!-- Cert Badges -->
+            <div class="flex flex-wrap justify-center gap-6 opacity-70">
+                <div class="border border-gold-500/30 px-6 py-2 rounded-full text-gold-400 text-xs font-semibold tracking-widest uppercase flex items-center">
+                    <i class="fas fa-certificate mr-2"></i> GMP Certified
+                </div>
+                <div class="border border-gold-500/30 px-6 py-2 rounded-full text-gold-400 text-xs font-semibold tracking-widest uppercase flex items-center">
+                    <i class="fas fa-flask mr-2"></i> Heavy Metal Tested
+                </div>
+                <div class="border border-gold-500/30 px-6 py-2 rounded-full text-gold-400 text-xs font-semibold tracking-widest uppercase flex items-center">
+                    <i class="fas fa-leaf mr-2"></i> 100% Vegan
+                </div>
+                <div class="border border-gold-500/30 px-6 py-2 rounded-full text-gold-400 text-xs font-semibold tracking-widest uppercase flex items-center">
+                    <i class="fas fa-times-circle mr-2"></i> Non-GMO
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Reviews -->
+    <section id="reviews" class="py-24 bg-earth-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-primary-900 text-center mb-12">Voices of Vitality</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-primary-900/5">
+                    <div class="flex text-gold-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h4 class="font-serif text-lg text-primary-900 mb-3">"Incredible Energy"</h4>
+                    <p class="text-sm text-charcoal-900/70 mb-6 italic">"I was skeptical about effervescent tablets, but the difference in my afternoon energy levels is night and day. No crash, just clean focus."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-primary-900 font-serif mr-3">AR</div>
+                        <div>
+                            <div class="text-sm font-bold text-primary-900">Aryan R.</div>
+                            <div class="text-[10px] text-green-600 uppercase tracking-widest"><i class="fas fa-check-circle"></i> Verified Buyer</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-primary-900/5">
+                    <div class="flex text-gold-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <h4 class="font-serif text-lg text-primary-900 mb-3">"Game Changer for Gym"</h4>
+                    <p class="text-sm text-charcoal-900/70 mb-6 italic">"I take this 30 mins before my workout. The stamina it provides is far superior to any synthetic pre-workout I've ever used. Premium quality."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-primary-900 font-serif mr-3">SK</div>
+                        <div>
+                            <div class="text-sm font-bold text-primary-900">Siddharth K.</div>
+                            <div class="text-[10px] text-green-600 uppercase tracking-widest"><i class="fas fa-check-circle"></i> Verified Buyer</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-primary-900/5">
+                    <div class="flex text-gold-500 text-xs mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <h4 class="font-serif text-lg text-primary-900 mb-3">"Less Stress, More Life"</h4>
+                    <p class="text-sm text-charcoal-900/70 mb-6 italic">"The Ashwagandha in this really works. My high-stress corporate job feels much more manageable. Tastes earthy but pleasant."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-primary-900 font-serif mr-3">VK</div>
+                        <div>
+                            <div class="text-sm font-bold text-primary-900">Vikram K.</div>
+                            <div class="text-[10px] text-green-600 uppercase tracking-widest"><i class="fas fa-check-circle"></i> Verified Buyer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section class="py-24 bg-white border-t border-primary-900/5">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-primary-900 text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item border border-primary-900/10 rounded-xl overflow-hidden cursor-pointer hover:border-gold-500/50 transition-colors bg-earth-50" onclick="this.classList.toggle('active')">
+                    <div class="px-6 py-4 flex justify-between items-center">
+                        <h4 class="font-semibold text-primary-900">When will I see results?</h4>
+                        <i class="fas fa-plus text-gold-600 faq-icon transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer px-6 bg-white">
+                        <p class="pb-4 text-sm text-charcoal-900/70">While you may feel an immediate boost in energy within 30 minutes due to the effervescent delivery, the deep adaptogenic benefits of Ashwagandha and Shilajit compound over time. Most users report significant changes in stress levels and overall vitality after 3-4 weeks of consistent daily use.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item border border-primary-900/10 rounded-xl overflow-hidden cursor-pointer hover:border-gold-500/50 transition-colors bg-earth-50" onclick="this.classList.toggle('active')">
+                    <div class="px-6 py-4 flex justify-between items-center">
+                        <h4 class="font-semibold text-primary-900">Can women take KORDY X?</h4>
+                        <i class="fas fa-plus text-gold-600 faq-icon transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer px-6 bg-white">
+                        <p class="pb-4 text-sm text-charcoal-900/70">While the formulation is heavily focused on boosting stamina and is highly popular among men, it is completely safe for women seeking to improve energy levels and manage stress, except for those who are pregnant or nursing.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item border border-primary-900/10 rounded-xl overflow-hidden cursor-pointer hover:border-gold-500/50 transition-colors bg-earth-50" onclick="this.classList.toggle('active')">
+                    <div class="px-6 py-4 flex justify-between items-center">
+                        <h4 class="font-semibold text-primary-900">Does it contain sugar or caffeine?</h4>
+                        <i class="fas fa-plus text-gold-600 faq-icon transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-answer px-6 bg-white">
+                        <p class="pb-4 text-sm text-charcoal-900/70">No. KORDY X is 100% caffeine-free and zero added sugar. The energy you feel is cellular vitality from the Ayurvedic herbs, preventing the jitters or crashes associated with caffeine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Related Products -->
+    <section class="py-24 bg-earth-100 border-t border-primary-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-primary-900 mb-10">Complete Your Routine</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Related 1 -->
+                <div class="glass-card rounded-2xl p-4 group">
+                    <div class="h-48 bg-white rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                        <img src="assets/prod_shilajit.png" alt="Shilajit" class="h-32 object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-serif text-primary-900 text-lg">Shilajit Gold Resin</h4>
+                    <p class="text-gold-600 text-sm font-bold mb-3">₹2,199</p>
+                    <button class="w-full py-2 border border-primary-900 text-primary-900 text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-primary-900 hover:text-gold-400 transition-colors">View Product</button>
+                </div>
+                <!-- Related 2 -->
+                <div class="glass-card rounded-2xl p-4 group">
+                    <div class="h-48 bg-white rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                        <img src="assets/prod_ashwagandha.png" alt="Ashwagandha" class="h-32 object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-serif text-primary-900 text-lg">Ashwagandha Plus</h4>
+                    <p class="text-gold-600 text-sm font-bold mb-3">₹899</p>
+                    <button class="w-full py-2 border border-primary-900 text-primary-900 text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-primary-900 hover:text-gold-400 transition-colors">View Product</button>
+                </div>
+                <!-- Related 3 -->
+                <div class="glass-card rounded-2xl p-4 group">
+                    <div class="h-48 bg-white rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                        <img src="assets/prod_gokshura.png" alt="Gokshura" class="h-32 object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-serif text-primary-900 text-lg">Gokshura Power</h4>
+                    <p class="text-gold-600 text-sm font-bold mb-3">₹1,799</p>
+                    <button class="w-full py-2 border border-primary-900 text-primary-900 text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-primary-900 hover:text-gold-400 transition-colors">View Product</button>
+                </div>
+                <!-- Related 4 -->
+                <div class="glass-card rounded-2xl p-4 group">
+                    <div class="h-48 bg-white rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                        <img src="assets/prod_ginseng.png" alt="Ginseng" class="h-32 object-contain group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h4 class="font-serif text-primary-900 text-lg">Panax Ginseng</h4>
+                    <p class="text-gold-600 text-sm font-bold mb-3">₹2,199</p>
+                    <button class="w-full py-2 border border-primary-900 text-primary-900 text-xs uppercase tracking-widest font-semibold rounded-lg hover:bg-primary-900 hover:text-gold-400 transition-colors">View Product</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. Final CTA & Footer -->
+    <section class="py-24 relative overflow-hidden bg-primary-900 text-center">
+        <div class="absolute inset-0 opacity-20 bg-[url('assets/hero_bg.png')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-900 via-primary-900/80 to-primary-900/40"></div>
+        
+        <div class="relative z-10 max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Invest in Your Health, <span class="italic text-gold-400">Naturally</span></h2>
+            <p class="text-white/80 font-light mb-10">Experience the purest form of Ayurvedic vitality today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="px-8 py-4 bg-gradient-gold text-primary-900 uppercase tracking-widest text-sm font-bold rounded-lg shadow-lg hover:-translate-y-1 transition-transform">Buy KORDY X Now</button>
+                <button class="px-8 py-4 border border-gold-500 text-gold-400 uppercase tracking-widest text-sm font-bold rounded-lg hover:bg-gold-500/10 transition-colors">Explore Collection</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary-900 text-white/70 pt-20 pb-10 border-t border-gold-500/20 relative z-10">
+        <div class="bg-grain"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 mb-6 brightness-0 invert">
+                    <p class="text-sm leading-relaxed mb-6">World-class Ayurvedic formulations crafted for the modern lifestyle. Purity, Potency, and Performance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="hover:text-gold-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
+                        <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
+                        <li><a href="about.html" class="text-gold-400 text-sm">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Join The Club</h4>
+                    <p class="text-sm mb-4">Subscribe to receive exclusive offers, Ayurvedic wellness tips, and early access to new launches.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="bg-white/5 border border-white/20 rounded-l-lg px-4 py-3 w-full text-white text-sm focus:outline-none focus:border-gold-500">
+                        <button type="button" class="bg-gold-500 text-primary-900 px-4 py-3 rounded-r-lg hover:bg-gold-400 transition-colors"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0 text-xs">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Add to Cart (Appears on Scroll) -->
+    <div id="sticky-cart" class="fixed bottom-0 w-full bg-white/90 backdrop-blur-lg border-t border-primary-900/10 p-4 transform translate-y-full transition-transform duration-300 z-50 flex items-center justify-between lg:justify-center lg:space-x-12 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+        <div class="hidden sm:flex items-center">
+            <img src="assets/prod_gokshura.png" class="h-12 w-auto mr-4" alt="Gokshura Power">
+            <div>
+                <h4 class="font-serif text-primary-900 font-bold">Gokshura Power</h4>
+                <p class="text-gold-600 text-sm font-semibold">₹1,799</p>
+            </div>
+        </div>
+        <button class="w-full sm:w-auto px-12 py-3 bg-primary-900 text-gold-400 rounded-lg uppercase tracking-widest text-xs font-bold hover:bg-primary-800 transition-colors shadow-lg shadow-primary-900/30">
+            Add to Cart
+        </button>
+    </div>
+
+    <script>
+        // Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = this.querySelector('i');
+            if(menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Sticky Nav & Sticky Cart logic
+        window.addEventListener('scroll', function() {
+            var nav = document.querySelector('nav');
+            var stickyCart = document.getElementById('sticky-cart');
+            
+            if (window.scrollY > 10) {
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('glass');
+            } else {
+                nav.classList.add('glass');
+                nav.classList.remove('bg-white/95');
+            }
+
+            // Show sticky cart after scrolling past hero section (approx 600px)
+            if (window.scrollY > 600) {
+                stickyCart.classList.remove('translate-y-full');
+            } else {
+                stickyCart.classList.add('translate-y-full');
+            }
+        });
+
+        // Quantity Selector
+        function updateQty(change) {
+            var qtyInput = document.getElementById('qty');
+            var currentVal = parseInt(qtyInput.value) || 1;
+            var newVal = currentVal + change;
+            if(newVal >= 1) {
+                qtyInput.value = newVal;
+            }
+        }
+    </script>
+    <script>
+        // Quantity update script
+        function updateQty(val) {
+            let qty = document.getElementById('qty');
+            let newQty = parseInt(qty.value) + val;
+            if(newQty >= 1) qty.value = newQty;
+        }
+        
+        function addToCart(btn) {
+            // Update counts
+            let counts = document.querySelectorAll('.cart-counter');
+            let qtyVal = parseInt(document.getElementById('qty').value);
+            counts.forEach(c => {
+                c.innerText = parseInt(c.innerText) + qtyVal;
+            });
+            
+            // Button animation
+            let originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="relative z-10 flex items-center justify-center text-white"><i class="fas fa-check mr-2 md:mr-3"></i> Added to Cart!</span>';
+            btn.classList.add('bg-green-700', 'text-white');
+            btn.classList.remove('bg-primary-900', 'text-gold-400');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-green-700', 'text-white');
+                btn.classList.add('bg-primary-900', 'text-gold-400');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

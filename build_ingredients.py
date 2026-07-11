@@ -386,21 +386,24 @@ for i, ing in enumerate(ingredients):
             </li>
         '''
         
-    # Products slider
     products_html = ""
-    for prod in ing['products']:
+    for p in ing["products"]:
         products_html += f'''
-            <div class="w-64 flex-shrink-0 glass-card rounded-xl p-4 flex flex-col group">
-                <div class="w-full h-48 bg-black/50 rounded-lg overflow-hidden mb-4 relative">
-                    <img src="{prod['img']}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 bg-white/50 flex items-center justify-center relative border-b border-primary-900/10">
+                        <img src="{p.get('img', 'assets/prod_kordy_x.png')}" alt="{p['name']}" class="h-32 w-auto object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 bg-white/40">
+                        <h3 class="text-lg mb-1 text-primary-900 font-serif hover:text-gold-600 transition-colors">{p['name']}</h3>
+                        <p class="text-dark/70 text-xs mb-3">Premium Formulation</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-lg font-bold text-gold-500">{p['price']}</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="w-full flex items-center justify-center bg-gradient-gold text-primary-900 hover:shadow-lg rounded-lg py-2.5 font-semibold uppercase tracking-wider text-[10px] transition-all duration-300 shadow-md" onclick="addToCart('{p['name']}', parseInt('{p['price']}'.replace('₹','').replace(',','')))">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="text-white font-serif text-lg tracking-wide">{prod['name']}</h4>
-                <div class="flex justify-between items-center mt-auto pt-2">
-                    <span class="text-gold-400 font-semibold">{prod['price']}</span>
-                    <button class="bg-transparent border border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-dark py-1.5 px-3 rounded-lg text-xs uppercase tracking-widest font-semibold transition-colors duration-300 ml-2 whitespace-nowrap" onclick="addToCart('{prod['name']}', parseInt('{prod['price']}'.replace('₹','').replace(',','')))"><i class="fas fa-shopping-bag mr-1"></i> Add to Cart</button>
-                </div>
-            </div>
         '''
 
     html_body += f'''
@@ -456,7 +459,7 @@ for i, ing in enumerate(ingredients):
                         <!-- Products Slider specific to this ingredient -->
                         <div>
                             <h4 class="text-xs uppercase tracking-widest text-gold-500 font-semibold mb-4">Found In Our Products</h4>
-                            <div class="flex overflow-x-auto gap-4 pb-4 hide-scrollbar snap-x snap-mandatory">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {products_html}
                             </div>
                         </div>

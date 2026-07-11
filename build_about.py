@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_content = """<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -578,4 +580,9 @@
         });
     </script>
 </body>
-</html>
+</html>"""
+
+with open("e:/ecc/about.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Generated about.html successfully!")

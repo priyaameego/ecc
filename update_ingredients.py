@@ -1,173 +1,100 @@
-ingredients_html = """<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingredients | THE HANURAAM WELLNESS</title>
-    <meta name="description" content="Discover the pure, potent Ayurvedic ingredients we use in our formulations.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
+import re
+
+filepath = "e:/ecc/ingredients.html"
+with open(filepath, "r", encoding="utf-8") as f:
+    content = f.read()
+
+# Update the tailwind config to match product_details.html
+tailwind_config_old = """        tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' },
+                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' }, /* Forest Essentials inspired Green */
                         gold: { 400: '#F5E6A3', 500: '#E3C16F', 600: '#C9A84C' },
                         earth: { 50: '#FDFBF7', 100: '#F8F5EE', 200: '#F3EFE4' },
                         brown: { 800: '#6E4E37' },
                         olive: { 600: '#7A8450' },
                         dark: '#1D1D1D'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
+                    },"""
+tailwind_config_new = """        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' },
+                        gold: { 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' },
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' },
+                        charcoal: { 800: '#2D2D2D', 900: '#1C1C1C' },
+                        dark: '#1D1D1D'
+                    },"""
+content = content.replace(tailwind_config_old, tailwind_config_new)
+
+# Update style layer
+style_layer_old = """        @layer utilities {
             .glass { @apply bg-white/80 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)]; }
+            .glass-card { @apply bg-white/5 backdrop-blur-md border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] hover:border-gold-500/40 transition-all duration-500; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 to-gold-400; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 to-gold-500; }
         }
-        body { @apply bg-earth-100 text-dark font-sans overflow-x-hidden; }
-        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        body { @apply bg-primary-900 text-gray-300 font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-white; }"""
+style_layer_new = """        @layer utilities {
+            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }
+            .glass-dark { @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
+            .glass-card { @apply bg-white/60 backdrop-blur-md border border-white/50 shadow-xl hover:border-gold-500/50 hover:bg-white hover:-translate-y-2 transition-all duration-500; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
         }
-        .animate-marquee {
-            animation: marquee 25s linear infinite;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="antialiased">
+        body { @apply bg-earth-50 text-charcoal-900 font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }"""
+content = content.replace(style_layer_old, style_layer_new)
 
-    <!-- Alert Bar -->
-    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-400 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
-        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max">
-            <span>✨ 100% Pure Ayurvedic Formulations</span>
-            <span>🌿 Trusted by Thousands</span>
-            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
-            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
-            <span>✨ 100% Pure Ayurvedic Formulations</span>
-            <span>🌿 Trusted by Thousands</span>
-            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
-            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
-        </div>
-    </div>
+# Update body class
+content = content.replace('body class="antialiased selection:bg-gold-500 selection:text-primary-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-800 via-primary-900 to-[#050f0b]"', 'body class="antialiased selection:bg-gold-500 selection:text-primary-900"')
 
-    <!-- Navigation -->
-    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
-                    <a href="about.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">About</a>
-                    <a href="products.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Products</a>
-                    <a href="ingredients.html" class="text-primary-900 hover:text-gold-600 transition-colors relative border-b-2 border-primary-900 pb-1 uppercase text-sm tracking-wider font-medium">Ingredients</a>
-                    <a href="contact.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Contact</a>
-                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative">
-                        <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
-                    </a>
-                </div>
-                <div class="md:hidden flex items-center space-x-4">
-                    <a href="cart.html" class="text-primary-900 relative">
-                        <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
-                    </a>
-                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">About</a>
-                <a href="products.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Products</a>
-                <a href="ingredients.html" class="block px-3 py-2 text-base font-medium text-primary-900 border-l-4 border-primary-900">Ingredients</a>
-                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Contact</a>
-            </div>
-        </div>
-    </nav>
+# Generic replacements for text colors
+content = content.replace('text-white', 'text-primary-900')
+# Fix some specific text-white that should remain white, like in the alert bar if there were any, or buttons.
+# In product sliders, text-white was for the title, so text-primary-900 is good.
 
-    <!-- Page Header -->
-    <section class="pt-32 pb-16 relative bg-earth-200 border-b border-primary-900/10 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-earth-50 via-earth-100 to-earth-200 z-0"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif text-primary-900">Materia <span class="text-gold-600">Medica</span></h1>
-            <p class="text-dark/70 max-w-2xl mx-auto text-lg font-light">
-                Explore the powerful botanical sources and ancient wisdom behind our signature ingredients.
-            </p>
-        </div>
-    </section>
+content = content.replace('text-gray-400', 'text-charcoal-900/70')
+content = content.replace('text-gray-300', 'text-charcoal-900/80')
+content = content.replace('border-white/5', 'border-primary-900/10')
+content = content.replace('border-white/10', 'border-primary-900/10')
+content = content.replace('border-white/20', 'border-primary-900/20')
+content = content.replace('bg-black/50', 'bg-earth-200')
+content = content.replace('bg-black/20', 'bg-primary-900/10')
+content = content.replace('text-dark', 'text-charcoal-900')
 
-    <!-- Ingredients Infographics -->
-    <section class="py-20 relative bg-earth-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-            
-            <div class="shadow-2xl rounded-2xl overflow-hidden border border-gold-600/20 transform hover:-translate-y-2 transition-all duration-500">
-                <img src="assets/info_ashwa.jpg" alt="Ashwagandha Infographic" class="w-full h-auto object-contain bg-black">
-            </div>
+# For the badge '100% Pure Botanical' it was text-white uppercase, now it is text-primary-900.
+# Actually, the badge has 'glass' which is light, so text-primary-900 is perfect.
 
-            <div class="shadow-2xl rounded-2xl overflow-hidden border border-gold-600/20 transform hover:-translate-y-2 transition-all duration-500">
-                <img src="assets/info_shilajit.jpg" alt="Shilajit Infographic" class="w-full h-auto object-contain bg-black">
-            </div>
+# Let's fix any "bg-transparent border border-gold-500 text-gold-400 hover:bg-gold-500 hover:text-dark" buttons in the slider
+content = content.replace('text-gold-400 hover:bg-gold-500 hover:text-dark', 'text-primary-900 hover:bg-primary-900 hover:text-gold-400')
+content = content.replace('border-gold-500', 'border-primary-900')
+# Re-fix the "text-gold-400" that might have been changed in the button
+content = content.replace('text-gold-400 hover:bg-primary-900', 'text-primary-900 hover:bg-primary-900')
 
-            <div class="shadow-2xl rounded-2xl overflow-hidden border border-gold-600/20 transform hover:-translate-y-2 transition-all duration-500">
-                <img src="assets/info_ginseng.jpg" alt="Panax Ginseng Infographic" class="w-full h-auto object-contain bg-black">
-            </div>
+# Product Slider Add to Cart buttons
+content = content.replace('<button class="bg-transparent border border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-gold-400', '<button class="bg-primary-900 border border-primary-900 text-gold-400 hover:bg-gold-500 hover:text-primary-900')
 
-            <div class="shadow-2xl rounded-2xl overflow-hidden border border-gold-600/20 transform hover:-translate-y-2 transition-all duration-500">
-                <img src="assets/info_gokshura.png" alt="Gokshura Infographic" class="w-full h-auto object-contain bg-black">
-            </div>
+# Gradient on images: from-primary-900/90 to transparent. Let's make it lighter or keep it to contrast with the text.
+# If the text is text-primary-900, it won't be visible on from-primary-900/90.
+# Wait! In the Image Block, there's a badge:
+# <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-transparent to-transparent"></div>
+# <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+# <span class="glass px-4 py-2 rounded-full text-xs text-primary-900 uppercase tracking-widest border-primary-900/20">...</span>
+# The badge text is text-primary-900, the glass bg is white/70. It will be visible. The gradient is behind the badge.
 
-            <div class="shadow-2xl rounded-2xl overflow-hidden border border-gold-600/20 transform hover:-translate-y-2 transition-all duration-500">
-                <img src="assets/info_damiyana.jpg" alt="Damiyana Infographic" class="w-full h-auto object-contain bg-black">
-            </div>
+# Update "Materia Medica" and Title section
+# <h1 class="text-4xl md:text-7xl font-bold mb-6 font-serif leading-tight">Nature's <span class="text-gradient-gold">Masterpieces</span></h1>
+# This is fine, since text-white became text-primary-900.
 
-        </div>
-    </section>
+# The ingredient number was text-fill-color: transparent with a gradient.
+# background: linear-gradient(to bottom, rgba(201,168,76,0.1), transparent);
+# Let's change it to a darker gold or primary-900 for light theme
+content = content.replace('rgba(201,168,76,0.1)', 'rgba(22,58,47,0.05)')
 
-    <!-- Footer -->
-    <footer class="bg-primary-900 pt-10 pb-6 border-t-8 border-gold-600 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-white/40 text-xs">
-                <p>&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+with open(filepath, "w", encoding="utf-8") as f:
+    f.write(content)
 
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        window.addEventListener('scroll', function() {
-            var nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.classList.add('bg-white/95');
-                nav.classList.remove('glass');
-            } else {
-                nav.classList.add('glass');
-                nav.classList.remove('bg-white/95');
-            }
-        });
-    </script>
-</body>
-</html>
-"""
-with open('e:/ecc/ingredients.html', 'w', encoding='utf-8') as f:
-    f.write(ingredients_html)
-
-print("Ingredients page updated successfully!")
+print("Updated ingredients.html theme!")

@@ -1,244 +1,154 @@
-import json
+import os
 
 ingredients = [
     {
+        "id": "ashwagandha",
         "num": "01",
         "name": "ASHWAGANDHA",
         "scientific": "Withania somnifera",
         "image": "assets/botanical_ashwagandha.png",
-        "source": "Derived from the root of Withania somnifera, a powerful adaptogenic herb.",
-        "compounds": "Naturally rich in Withanolides, its key active compounds.",
-        "heritage": "Revered in Ayurveda for centuries as a Rasayana (rejuvenator).",
-        "uses": "Traditionally used to help the body manage stress and support overall well-being.",
+        "title": "Ashwagandha Root",
+        "desc": "Revered as a <span class='italic text-gold-400'>Rasayana</span> (rejuvenator) in Ayurveda for over 3,000 years, Ashwagandha is nature's ultimate adaptogen. It intelligently helps the body manage stress, lowers cortisol levels, and restores foundational vitality.",
+        "compounds": "Withanolides (5% standardized)",
+        "source": "Roots harvested at peak maturity",
         "benefits": [
-            "Known to support healthy energy levels and mental clarity.",
-            "Valued for its role in promoting balance and vitality.",
-            "Helps regulate cortisol and mood.",
-            "Supports restorative sleep cycles."
+            {"icon": "fa-brain", "title": "Stress & Cortisol Regulation", "desc": "Clinically shown to support healthy cortisol levels and promote a calm state of mind."},
+            {"icon": "fa-bolt", "title": "Endurance & Vitality", "desc": "Enhances cellular energy production (ATP) for sustained, jitter-free stamina."}
         ],
         "products": [
-            {"name": "KORDY X", "img": "assets/cat_vitality.png", "price": "₹2,499"}
+            {"name": "Ashwagandha Plus", "img": "assets/prod_ashwagandha.png", "desc": "Advanced Stress & Vitality Support", "price": "1,899", "link": "product_ashwagandha.html"}
         ]
     },
     {
+        "id": "shilajit",
         "num": "02",
         "name": "SHILAJIT",
         "scientific": "Asphaltum punjabianum",
         "image": "assets/botanical_shilajit.png",
-        "source": "Sourced from high-altitude Himalayan rocks between 16,000–18,000 ft. Purified traditionally.",
-        "compounds": "Rich in Fulvic Acid, Humic Acid, and 85+ beneficial trace elements.",
-        "heritage": "Described in Ayurveda as the 'Conqueror of Mountains and Destroyer of Weakness'.",
-        "uses": "Traditionally used to support strength, stamina, and deep vitality.",
+        "title": "Himalayan Shilajit",
+        "desc": "Sourced from high-altitude Himalayan rocks between 16,000–18,000 ft, Shilajit is known as the 'Conqueror of Mountains'. It is a potent source of fulvic acid and trace minerals.",
+        "compounds": "Fulvic Acid, Humic Acid, 85+ Minerals",
+        "source": "High-altitude Himalayan rock exudate",
         "benefits": [
-            "Naturally contains Fulvic Acid for high mineral absorption.",
-            "Helps support normal cellular energy (ATP) production and reduce fatigue.",
-            "Supports overall male wellness and natural performance.",
-            "Acts as a powerful antioxidant and rejuvenating agent."
+            {"icon": "fa-mountain", "title": "Deep Cellular Vitality", "desc": "Supports normal cellular energy (ATP) production and reduces chronic fatigue."},
+            {"icon": "fa-shield-halved", "title": "Powerful Antioxidant", "desc": "Neutralizes free radicals and supports rejuvenation at a cellular level."}
         ],
         "products": [
-            {"name": "SHILAJIT PRO", "img": "assets/cat_joint.png", "price": "₹1,899"}
+            {"name": "Shilajit Gold", "img": "assets/prod_shilajit.png", "desc": "Pure Himalayan Shilajit Resin", "price": "3,299", "link": "product_shilajit.html"}
         ]
     },
     {
+        "id": "gokshura",
         "num": "03",
-        "name": "PANAX GINSENG",
-        "scientific": "Panax ginseng",
-        "image": "assets/botanical_ginseng.png",
-        "source": "Derived from the slow-growing root of Panax ginseng, a premium adaptogenic herb.",
-        "compounds": "Rich in Ginsenosides (Rb1, Rg1, Re, Rd) – the active adaptogenic saponins.",
-        "heritage": "Revered in Traditional Chinese Medicine for thousands of years as a tonic for vitality.",
-        "uses": "Adaptogenic herb known to help the body adapt to physical and mental stress.",
-        "benefits": [
-            "Supports healthy energy, endurance and physical performance.",
-            "Helps support cognitive function, focus and mental clarity.",
-            "Traditionally used to promote stamina and overall wellness.",
-            "Supports immune system modulation."
-        ],
-        "products": [
-            {"name": "KORDY X", "img": "assets/cat_vitality.png", "price": "₹2,499"}
-        ]
-    },
-    {
-        "num": "04",
         "name": "GOKSHURA",
         "scientific": "Tribulus terrestris",
         "image": "assets/botanical_gokshura.png",
-        "source": "Derived from the fruits and aerial parts of the Tribulus terrestris plant.",
-        "compounds": "Rich in Saponins (Protodioscin), Flavonoids & Alkaloids.",
-        "heritage": "Revered in Ayurveda as a Vrishya (aphrodisiac) & Balya (strength promoting) herb.",
-        "uses": "Traditionally used in Ayurveda to support male vitality and reproductive wellness.",
+        "title": "Gokshura Extract",
+        "desc": "Revered in Ayurveda as a <span class='italic text-gold-400'>Balya</span> (strength promoting) herb, Gokshura naturally supports physical endurance, muscle recovery, and male vitality.",
+        "compounds": "Saponins (Protodioscin), Flavonoids",
+        "source": "Fruits and aerial parts",
         "benefits": [
-            "Naturally rich in Protodioscin, a key active saponin.",
-            "Helps support healthy testosterone levels and hormonal balance.",
-            "Supports physical strength, endurance and muscular performance.",
-            "Known to support healthy urinary function."
+            {"icon": "fa-dumbbell", "title": "Physical Endurance", "desc": "Supports physical strength, endurance and muscular performance."},
+            {"icon": "fa-mars", "title": "Male Vitality", "desc": "Helps support healthy testosterone levels and hormonal balance naturally."}
         ],
         "products": [
-            {"name": "KORDY X", "img": "assets/cat_vitality.png", "price": "₹2,499"},
-            {"name": "VITALITY PACK", "img": "assets/cat_joint.png", "price": "₹3,999"}
+            {"name": "Gokshura Power", "img": "assets/prod_gokshura.png", "desc": "Male Vitality Support", "price": "1,799", "link": "product_gokshura.html"}
         ]
     },
     {
+        "id": "ginseng",
+        "num": "04",
+        "name": "PANAX GINSENG",
+        "scientific": "Panax ginseng",
+        "image": "assets/botanical_ginseng.png",
+        "title": "Panax Ginseng Root",
+        "desc": "Revered in Traditional Chinese Medicine for thousands of years as a tonic for vitality, Ginseng helps the body adapt to physical and mental stress.",
+        "compounds": "Ginsenosides (Rb1, Rg1, Re, Rd)",
+        "source": "Slow-growing root",
+        "benefits": [
+            {"icon": "fa-battery-full", "title": "Sustained Energy", "desc": "Supports healthy energy, endurance and physical performance without jitters."},
+            {"icon": "fa-lightbulb", "title": "Cognitive Clarity", "desc": "Helps support cognitive function, focus and mental clarity."}
+        ],
+        "products": [
+            {"name": "Panax Ginseng", "img": "assets/prod_ginseng.png", "desc": "Adaptogenic Energy Booster", "price": "2,199", "link": "product_ginseng.html"}
+        ]
+    },
+    {
+        "id": "chaste",
         "num": "05",
-        "name": "DAMIANA",
-        "scientific": "Turnera diffusa",
-        "image": "assets/botanical_damiana.png",
-        "source": "Derived from the leaves and aerial parts of Turnera diffusa, natively found in Central America.",
-        "compounds": "Naturally contains Flavonoids, Arbutin, Terpenoids, Tannins and Essential Oils.",
-        "heritage": "Traditionally valued in ancient herbal medicine for vitality and overall well-being.",
-        "uses": "Helps the body cope with everyday physical and mental stress.",
-        "benefits": [
-            "Traditionally valued for supporting male reproductive wellness.",
-            "Commonly included in botanical vitality formulations.",
-            "Acts as a nervine relaxant to support mood.",
-            "Supports healthy circulation."
-        ],
-        "products": [
-            {"name": "KORDY X", "img": "assets/cat_vitality.png", "price": "₹2,499"}
-        ]
-    },
-    {
-        "num": "06",
         "name": "CHASTE TREE",
         "scientific": "Vitex agnus-castus",
         "image": "assets/botanical_chaste_tree.png",
-        "source": "Sourced from the potent berries of the Vitex agnus-castus Mediterranean shrub.",
-        "compounds": "Rich in Agnuside, Flavonoids, and Essential Iridoid Glycosides.",
-        "heritage": "Used for over 2,500 years in traditional European botanical medicine.",
-        "uses": "Supports natural hormonal balance through pituitary gland modulation.",
+        "title": "Chaste Tree Berry",
+        "desc": "Used for over 2,500 years in traditional botanical medicine, Chaste Tree gently supports natural hormonal equilibrium and female wellness.",
+        "compounds": "Agnuside, Flavonoids",
+        "source": "Potent berries of the Mediterranean shrub",
         "benefits": [
-            "Promotes emotional balance and stabilizes mood swings.",
-            "Supports healthy endocrine system function.",
-            "Valued for its gentle, regulating effect on the body.",
-            "Rich in powerful botanical antioxidants."
+            {"icon": "fa-venus", "title": "Hormonal Balance", "desc": "Supports natural hormonal balance through pituitary gland modulation."},
+            {"icon": "fa-spa", "title": "Emotional Wellness", "desc": "Promotes emotional balance and stabilizes mood swings."}
         ],
         "products": [
-            {"name": "WOMEN'S BALANCE", "img": "assets/cat_mind.png", "price": "₹2,199"}
+            {"name": "Chaste Tree Blend", "img": "assets/prod_chaste.png", "desc": "Hormonal Balance Support", "price": "1,599", "link": "product_chaste.html"}
         ]
     },
     {
-        "num": "07",
+        "id": "kaunch",
+        "num": "06",
         "name": "KAUNCH BEEJ",
         "scientific": "Mucuna pruriens",
         "image": "assets/botanical_kaunch_beej.png",
-        "source": "Derived from the seeds of Mucuna pruriens, traditionally known as Kaunch Beej.",
-        "compounds": "Naturally contains L-DOPA, Alkaloids, Flavonoids, Saponins and Tannins.",
-        "heritage": "Traditionally used in herbal practices for vitality, strength and overall well-being.",
-        "uses": "Traditionally used to support natural vitality and stamina.",
+        "title": "Kaunch Beej Extract",
+        "desc": "A natural source of L-DOPA, Kaunch Beej is traditionally used in Ayurvedic practices for reproductive wellness, vitality, and nervous system health.",
+        "compounds": "L-DOPA, Alkaloids",
+        "source": "Seeds of Mucuna pruriens",
         "benefits": [
-            "Helps support nervous system health and mood balance.",
-            "Traditionally used in Ayurvedic practices for reproductive wellness.",
-            "May help support muscle function and physical performance.",
-            "Supports overall well-being and energy levels."
+            {"icon": "fa-child-reaching", "title": "Nervous System Support", "desc": "Helps support nervous system health and overall mood balance."},
+            {"icon": "fa-fire", "title": "Vitality & Strength", "desc": "Traditionally used to support natural vitality, stamina and physical performance."}
         ],
         "products": [
-            {"name": "KORDY X", "img": "assets/cat_vitality.png", "price": "₹2,499"}
+            {"name": "KORDY X", "img": "assets/prod_kordy_x.png", "desc": "Effervescent Vitality", "price": "1,499", "link": "product_kordy_x.html"}
         ]
     },
     {
-        "num": "08",
-        "name": "KALI MIRCH (PIPERINE)",
+        "id": "piperine",
+        "num": "07",
+        "name": "KALI MIRCH",
         "scientific": "Piper nigrum",
         "image": "assets/botanical_piperine.png",
-        "source": "Derived from the dried fruits (black peppercorns) of Piper nigrum, commonly known as Kali Mirch.",
-        "compounds": "Naturally contains Piperine, Essential Oils, Chavicine, Volatile Oils and Flavonoids.",
-        "heritage": "Traditionally used in Ayurveda to enhance absorption, support digestion and overall well-being.",
-        "uses": "Enhances the bioavailability and absorption of nutrients and herbs.",
+        "title": "Piperine (Black Pepper)",
+        "desc": "Known as Kali Mirch in Ayurveda, Piperine is nature's ultimate bio-enhancer. It significantly increases the bioavailability and absorption of other nutrients and herbs.",
+        "compounds": "Piperine, Essential Oils",
+        "source": "Dried fruits (peppercorns)",
         "benefits": [
-            "Supports healthy digestion and nutrient assimilation.",
-            "Traditionally used to support respiratory and immune health.",
-            "Powerful antioxidant and may help reduce oxidative stress.",
-            "Supports overall wellness and vitality."
+            {"icon": "fa-arrows-to-circle", "title": "Bioavailability Enhancer", "desc": "Clinically proven to enhance the absorption of vital nutrients and botanical extracts."},
+            {"icon": "fa-leaf", "title": "Digestive Support", "desc": "Supports healthy digestion and nutrient assimilation."}
         ],
         "products": [
-            {"name": "IMMUNITY BLEND", "img": "assets/cat_immunity.png", "price": "₹1,299"}
-        ]
-    },
-    {
-        "num": "09",
-        "name": "CURCUMIN EXTRACT",
-        "scientific": "Curcuma longa",
-        "image": "assets/botanical_curcumin.png",
-        "source": "Derived from the root of Turmeric (Curcuma longa), nature's gold standard for joint health.",
-        "compounds": "Naturally rich in Curcuminoids, its key active compounds.",
-        "heritage": "Clinically researched botanical with scientifically trusted performance.",
-        "uses": "Provides anti-inflammatory support, antioxidant protection, and supports joint mobility.",
-        "benefits": [
-            "Helps support a healthy inflammatory response.",
-            "Promotes joint comfort and flexibility.",
-            "Provides powerful antioxidant protection.",
-            "Supports cartilage and connective tissue health.",
-            "Backed by extensive scientific research."
-        ],
-        "products": [
-            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
-        ]
-    },
-    {
-        "num": "10",
-        "name": "BOSWELLIA SERRATA EXTRACT",
-        "scientific": "Boswellia serrata",
-        "image": "assets/botanical_boswellia.png",
-        "source": "Derived from Boswellia serrata resin (Indian Frankincense).",
-        "compounds": "Main compounds are Boswellic Acids (AKBA & KBA).",
-        "heritage": "Used in Ayurveda for centuries as a pure botanical.",
-        "uses": "Helps the body handle swelling and inflammation, protecting cells.",
-        "benefits": [
-            "Comes from the resin of the Boswellia serrata tree.",
-            "Contains natural compounds called Boswellic Acids.",
-            "Helps the body handle swelling and inflammation.",
-            "Protects cells from damage caused by free radicals.",
-            "Supports easy movement and flexible joints."
-        ],
-        "products": [
-            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
-        ]
-    },
-    {
-        "num": "11",
-        "name": "SALIX ALBA BARK EXTRACT",
-        "scientific": "Salix alba",
-        "image": "assets/botanical_salix_alba.png",
-        "source": "Derived from the bark of the Salix alba tree (White Willow).",
-        "compounds": "Naturally contains Salicin - a plant-based compound.",
-        "heritage": "Traditionally used in herbal practices for comfort and wellness.",
-        "uses": "Traditionally used in herbal practices for body comfort.",
-        "benefits": [
-            "Comes from the bark of the White Willow tree.",
-            "Contains Salicin, a natural plant compound.",
-            "Traditionally used in herbal practices for body comfort.",
-            "Supports the body's natural response to everyday stress and strain.",
-            "A well-known botanical used for generations."
-        ],
-        "products": [
-            {"name": "JOYFLEX PLUS", "img": "assets/cat_joint.png", "price": "₹1,899"}
+            {"name": "JOYFLEX PLUS", "img": "assets/prod_joyflex.png", "desc": "Advanced Joint Relief Formula", "price": "1,899", "link": "product_joyflex.html"}
         ]
     }
 ]
 
-html_head = """<!DOCTYPE html>
-<html lang="en">
+html_head = r'''<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingredients Showcase | THE HANURAAM WELLNESS</title>
-    <meta name="description" content="Discover the pure, potent Ayurvedic ingredients we use in our formulations.">
+    <title>Ingredients | THE HANURAAM WELLNESS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: { 900: '#1F4D3B', 800: '#2E5E4E', 700: '#355E3B' }, /* Forest Essentials inspired Green */
-                        gold: { 400: '#F5E6A3', 500: '#E3C16F', 600: '#C9A84C' },
-                        earth: { 50: '#FDFBF7', 100: '#F8F5EE', 200: '#F3EFE4' },
-                        brown: { 800: '#6E4E37' },
-                        olive: { 600: '#7A8450' },
-                        dark: '#1D1D1D'
+                        primary: { 800: '#2E5E4E', 900: '#1F4D3B' },
+                        gold: { 100: '#fcf8f0', 200: '#f5e8c4', 300: '#edd898', 400: '#D4AF37', 500: '#c59d29', 600: '#a37f1e' },
+                        earth: { 50: '#F8F5EF', 100: '#EBE5D9', 200: '#D6CDBA', 800: '#5C5441', 900: '#4A4333' },
+                        charcoal: { 800: '#2A2A2A', 900: '#1C1C1C' }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Playfair Display', 'serif']
                     }
                 }
             }
@@ -246,94 +156,62 @@ html_head = """<!DOCTYPE html>
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .glass { @apply bg-white/80 backdrop-blur-lg border border-white/40 shadow-[0_8px_32px_0_rgba(31,77,59,0.05)]; }
-            .glass-card { @apply bg-white/5 backdrop-blur-md border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] hover:border-gold-500/40 transition-all duration-500; }
-            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 to-gold-400; }
-            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 to-gold-500; }
-        }
-        body { @apply bg-primary-900 text-gray-300 font-sans overflow-x-hidden; }
-        h1, h2, h3, h4, h5, h6 { @apply font-serif text-white; }
-        
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .ingredient-number {
-            font-size: 8rem;
-            line-height: 1;
-            background: linear-gradient(to bottom, rgba(201,168,76,0.1), transparent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: absolute;
-            top: -2rem;
-            left: 0rem;
-            z-index: 0;
-            user-select: none;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            .glass { @apply bg-white/60 backdrop-blur-xl border border-primary-900/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
+            .glass-card { @apply bg-white/60 backdrop-blur-md border border-primary-900/10 hover:border-gold-500/50 transition-colors duration-500; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500; }
+            .text-gradient-gold { @apply text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-gold-500; }
         }
         
-        @media (min-width: 768px) {
-            .ingredient-number {
-                font-size: 14rem;
-                top: -4rem;
-                left: -2rem;
-            }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #163A2F; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c59d29; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            animation: marquee 25s linear infinite;
-        }
-    </style>
 </head>
-<body class="antialiased selection:bg-gold-500 selection:text-primary-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-800 via-primary-900 to-[#050f0b]">
-
-    <!-- Alert Bar -->
-    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-400 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
-        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max">
-            <span>✨ 100% Pure Ayurvedic Formulations</span>
-            <span>🌿 Trusted by Thousands</span>
-            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
-            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
-            <span>✨ 100% Pure Ayurvedic Formulations</span>
-            <span>🌿 Trusted by Thousands</span>
-            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
-            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
-        </div>
-    </div>
+<body class="antialiased bg-earth-50 text-charcoal-900 selection:bg-gold-500 selection:text-primary-900 overflow-x-hidden">
 
     <!-- Navigation -->
     <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
+            <div class="flex justify-between items-center h-20 relative">
+                <div class="hidden md:flex space-x-8 items-center w-1/3">
+                    <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium               ">About</a>
+                    <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
+                </div>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 flex items-center">
                     <a href="index.html" class="flex items-center">
-                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain hover:scale-105 transition-transform duration-500">
                     </a>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Home</a>
-                    <a href="about.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">About</a>
-                    <a href="products.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Products</a>
-                    <a href="ingredients.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium border-b-2 border-primary-900 pb-1">Ingredients</a>
-                    <a href="certifications.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Certifications</a>
-                    <a href="contact.html" class="text-dark hover:text-gold-600 transition-colors uppercase text-sm tracking-wider font-medium">Contact</a>
-                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative">
-                        <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center justify-end w-1/3">
+                    <a href="ingredients.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Ingredients</a>
+                    <a href="certifications.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Certifications</a>
+                    <a href="contact.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Contact</a>
+                    <a href="thankyou.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Thank You</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative group">
+                        <i class="fas fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
                     </a>
                 </div>
-                <div class="md:hidden flex items-center space-x-4">
+                
+                <div class="md:hidden flex items-center space-x-4 ml-auto">
                     <a href="cart.html" class="text-primary-900 relative">
                         <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">1</span>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
                     </a>
                     <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
@@ -343,236 +221,429 @@ html_head = """<!DOCTYPE html>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Home</a>
-                <a href="about.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">About</a>
-                <a href="products.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Products</a>
-                <a href="ingredients.html" class="block px-3 py-2 text-base font-medium text-primary-900 border-l-4 border-primary-900">Ingredients</a>
-                <a href="certifications.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Certifications</a>
-                <a href="contact.html" class="block px-3 py-2 text-base font-medium text-dark hover:text-primary-900">Contact</a>
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="pt-40 pb-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 z-0"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center" data-aos="fade-up">
-            <span class="text-gold-500 tracking-[0.3em] uppercase text-sm mb-4 block font-semibold">Materia Medica</span>
-            <h1 class="text-4xl md:text-7xl font-bold mb-6 font-serif leading-tight">Nature's <span class="text-gradient-gold">Masterpieces</span></h1>
-            <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed px-4">
-                Discover the pure, potent botanical sources and ancient wisdom behind THE HANURAAM WELLNESS formulations. Each ingredient is a luxurious gift from the earth.
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden parallax-bg" style="background-image: url('assets/hero_bg.png');">
+        <div class="absolute inset-0 bg-earth-50/80 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-primary-900/80 to-primary-900 z-0"></div>
+        
+        <!-- Floating Elements -->
+        <img src="assets/botanical_ashwagandha.png" alt="Herb" class="absolute top-1/4 left-10 w-48 md:w-80 opacity-20 rotate-[-15deg] mix-blend-screen blur-[2px]" data-aos="fade-right" data-aos-duration="2000">
+        <img src="assets/botanical_shilajit.png" alt="Resin" class="absolute bottom-1/4 right-10 w-48 md:w-80 opacity-20 rotate-[15deg] mix-blend-screen blur-[2px]" data-aos="fade-left" data-aos-duration="2000">
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4 pt-20">
+            <span class="inline-block py-1 px-4 border border-gold-400/30 rounded-full text-gold-400 text-xs tracking-[0.3em] uppercase mb-8" data-aos="fade-down">Materia Medica</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-tight" data-aos="zoom-in" data-aos-delay="100">
+                Nature's <br/><span class="text-gradient-gold italic">Masterpieces</span>
+            </h1>
+            <p class="text-lg md:text-xl text-primary-900/70 font-light leading-relaxed max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="200">
+                Discover the pure, potent botanical sources and ancient wisdom behind THE HANURAAM WELLNESS formulations. Each ingredient is a luxurious gift from the earth, meticulously sourced and scientifically validated.
             </p>
-            <div class="mt-10 w-px h-24 bg-gradient-to-b from-gold-500 to-transparent mx-auto"></div>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <a href="#explore" class="inline-flex flex-col items-center text-gold-400 hover:text-primary-900 transition-colors duration-300 group">
+                    <span class="text-xs uppercase tracking-widest mb-4">Explore Botanical Library</span>
+                    <i class="fas fa-chevron-down animate-bounce text-xl"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Ingredients Sections -->
-"""
-
-html_body = ""
-
-for i, ing in enumerate(ingredients):
-    is_even = i % 2 == 0
-    layout_class = "lg:flex-row" if is_even else "lg:flex-row-reverse"
-    
-    # Benefits checklist
-    benefits_html = ""
-    for ben in ing['benefits']:
-        benefits_html += f'''
-            <li class="flex items-start">
-                <i class="fas fa-check-circle text-gold-500 mt-1 mr-3 flex-shrink-0"></i>
-                <span class="text-sm text-gray-300 leading-relaxed">{ben}</span>
-            </li>
-        '''
-        
-    products_html = ""
-    for p in ing["products"]:
-        products_html += f'''
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-white/50 flex items-center justify-center relative border-b border-primary-900/10">
-                        <img src="{p.get('img', 'assets/prod_kordy_x.png')}" alt="{p['name']}" class="h-32 w-auto object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="p-4 bg-white/40">
-                        <h3 class="text-lg mb-1 text-primary-900 font-serif hover:text-gold-600 transition-colors">{p['name']}</h3>
-                        <p class="text-dark/70 text-xs mb-3">Premium Formulation</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-lg font-bold text-gold-500">{p['price']}</span>
-                        </div>
-                        <div class="flex gap-2">
-                            <button class="w-full flex items-center justify-center bg-gradient-gold text-primary-900 hover:shadow-lg rounded-lg py-2.5 font-semibold uppercase tracking-wider text-[10px] transition-all duration-300 shadow-md" onclick="addToCart('{p['name']}', parseInt('{p['price']}'.replace('₹','').replace(',','')))">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-        '''
-
-    html_body += f'''
-    <section class="py-16 md:py-24 relative border-t border-white/5 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col {layout_class} gap-12 md:gap-16 items-center">
-                
-                <!-- Image Block -->
-                <div class="w-full lg:w-1/2 relative group" data-aos="{"fade-right" if is_even else "fade-left"}">
-                    <div class="absolute -inset-4 bg-gradient-gold opacity-0 group-hover:opacity-10 blur-xl rounded-full transition-opacity duration-700"></div>
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] lg:aspect-square">
-                        <img src="{ing['image']}" alt="{ing['name']}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-                            <span class="glass px-4 py-2 rounded-full text-xs text-white uppercase tracking-widest border-white/20"><i class="fas fa-leaf mr-2 text-gold-400"></i>100% Pure Botanical</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Content Block -->
-                <div class="w-full lg:w-1/2 relative mt-10 lg:mt-0" data-aos="{"fade-left" if is_even else "fade-right"}">
-                    <div class="ingredient-number">{ing['num']}</div>
-                    <div class="relative z-10 pt-8 lg:pt-0">
-                        <h3 class="text-gold-500 tracking-[0.4em] text-xs font-semibold uppercase mb-3">{ing['scientific']}</h3>
-                        <h2 class="text-3xl md:text-5xl font-serif text-white mb-8 tracking-wide leading-tight">{ing['name']}</h2>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                            <div class="glass-card p-5 rounded-xl">
-                                <i class="fas fa-seedling text-gold-500 text-xl mb-3"></i>
-                                <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-2">Botanical Source</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">{ing['source']}</p>
-                            </div>
-                            <div class="glass-card p-5 rounded-xl">
-                                <i class="fas fa-flask text-gold-500 text-xl mb-3"></i>
-                                <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-2">Key Compounds</h4>
-                                <p class="text-xs text-gray-400 leading-relaxed">{ing['compounds']}</p>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <h4 class="text-white font-serif text-xl border-b border-white/10 pb-2 mb-4">Ayurvedic Heritage & Use</h4>
-                            <p class="text-gray-400 text-sm leading-relaxed mb-3"><strong class="text-gold-400 font-medium">Heritage:</strong> {ing['heritage']}</p>
-                            <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-gold-400 font-medium">Modern Use:</strong> {ing['uses']}</p>
-                        </div>
-                        
-                        <div class="mb-10">
-                            <h4 class="text-white font-serif text-xl border-b border-white/10 pb-2 mb-4">Health Benefits</h4>
-                            <ul class="space-y-3">
-                                {benefits_html}
-                            </ul>
-                        </div>
-                        
-                        <!-- Products Slider specific to this ingredient -->
-                        <div>
-                            <h4 class="text-xs uppercase tracking-widest text-gold-500 font-semibold mb-4">Found In Our Products</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {products_html}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+    <!-- Ingredient Navigation Grid -->
+    <section id="explore" class="py-24 bg-earth-50 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">The Botanical <span class="text-gradient-gold italic">Library</span></h2>
+                <div class="h-px w-24 bg-gold-500/50 mx-auto"></div>
             </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+'''
+
+html_grid = ""
+for i, ing in enumerate(ingredients):
+    delay = (i % 4) * 100
+    html_grid += f'''
+                <!-- Card {i+1} -->
+                <a href="#ingredient-{ing['id']}" class="group block relative overflow-hidden rounded-xl aspect-[3/4] glass-card" data-aos="fade-up" data-aos-delay="{delay}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-100 via-white/50 to-transparent z-10"></div>
+                    <img src="{ing['image']}" alt="{ing['name']}" class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100 mix-blend-multiply group-hover:mix-blend-normal">
+                    <div class="absolute inset-x-0 bottom-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-gold-400 text-[10px] tracking-widest uppercase mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{ing['scientific']}</p>
+                        <h3 class="text-xl font-serif font-bold text-primary-900 group-hover:text-gold-400 transition-colors">{ing['name']}</h3>
+                    </div>
+                </a>
+'''
+
+html_middle = '''
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-primary-900/50 text-sm italic font-serif">Featuring over 20+ ethically sourced botanical ingredients.</p>
+            </div>
+        </div>
+    </section>
+'''
+
+html_spotlights = ""
+for i, ing in enumerate(ingredients):
+    # Alternate left/right layout
+    is_left = i % 2 == 0
+    bg_color = "bg-white" if is_left else "bg-earth-50"
+    
+    img_block = f'''
+                <div class="w-full lg:w-1/2" data-aos="{ 'fade-right' if is_left else 'fade-left' }">
+                    <div class="relative rounded-2xl overflow-hidden glass-card p-4 lg:p-8 aspect-square flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent"></div>
+                        <img src="{ing['image']}" alt="{ing['name']}" class="w-full h-full object-contain filter drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]">
+                    </div>
+                </div>
+    '''
+    
+    content_block = f'''
+                <div class="w-full lg:w-1/2" data-aos="{ 'fade-left' if is_left else 'fade-right' }">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <span class="text-gold-400 font-bold text-2xl font-serif">{ing['num']}</span>
+                        <div class="h-px w-12 bg-gold-400"></div>
+                        <span class="text-xs tracking-[0.2em] uppercase text-primary-900/60 font-semibold">{ing['scientific']}</span>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">{ing['title']}</h2>
+                    
+                    <p class="text-primary-900/70 text-lg font-light leading-relaxed mb-8">
+                        {ing['desc']}
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-10 border-t border-b border-primary-900/10 py-8">
+                        <div>
+                            <h4 class="text-[10px] text-gold-400 uppercase tracking-widest font-bold mb-2">Active Compounds</h4>
+                            <p class="text-sm text-primary-900/80 font-medium">{ing['compounds']}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[10px] text-gold-400 uppercase tracking-widest font-bold mb-2">Botanical Source</h4>
+                            <p class="text-sm text-primary-900/80 font-medium">{ing['source']}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Benefits -->
+                    <h4 class="text-sm text-primary-900 font-bold mb-4 font-serif italic">Key Wellness Benefits</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 group cursor-default">
+                            <div class="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/10 transition-colors">
+                                <i class="fas {ing['benefits'][0]['icon']} text-gold-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-primary-900 font-semibold text-sm mb-1 group-hover:text-gold-400 transition-colors">{ing['benefits'][0]['title']}</h5>
+                                <p class="text-primary-900/60 text-xs leading-relaxed">{ing['benefits'][0]['desc']}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 group cursor-default">
+                            <div class="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/10 transition-colors">
+                                <i class="fas {ing['benefits'][1]['icon']} text-gold-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-primary-900 font-semibold text-sm mb-1 group-hover:text-gold-400 transition-colors">{ing['benefits'][1]['title']}</h5>
+                                <p class="text-primary-900/60 text-xs leading-relaxed">{ing['benefits'][1]['desc']}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    '''
+
+    layout = f'<div class="flex flex-col lg:flex-row items-center gap-16">{img_block}{content_block}</div>' if is_left else f'<div class="flex flex-col lg:flex-row-reverse items-center gap-16">{img_block}{content_block}</div>'
+
+    html_spotlights += f'''
+    <!-- Premium Ingredient Spotlight: {ing['name']} -->
+    <section id="ingredient-{ing['id']}" class="py-32 relative {bg_color} border-t border-gold-500/10">
+        <!-- Giant Watermark -->
+        <div class="absolute top-20 left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none select-none">
+            <span class="text-[10rem] md:text-[20rem] font-serif font-bold text-primary-900/[0.02] tracking-tighter">{ing['name']}</span>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {layout}
         </div>
     </section>
     '''
 
-html_footer = """
-    <!-- Footer -->
-    <footer class="bg-primary-900 pt-20 pb-10 border-t-8 border-gold-600">
+html_end = r'''
+    <!-- Found in Our Products Section -->
+    <section class="py-24 bg-earth-100 border-t border-primary-900/10 relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <!-- Brand -->
-                <div class="lg:col-span-2">
-                    <a href="index.html" class="flex items-center"><img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain"></a>
-                    <p class="text-white/80 font-serif italic mb-6 max-w-md text-lg">"Ancient Wisdom. Modern Formulation. Pure Wellness."</p>
-                    <p class="text-white/60 text-sm max-w-md leading-relaxed">
-                        A premium luxury Ayurvedic wellness brand dedicated to bringing you the purest, most potent herbal formulations inspired by ancient royal traditions and backed by modern science.
-                    </p>
-                </div>
-                <!-- Links -->
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
                 <div>
-                    <h4 class="text-gold-400 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Explore</h4>
-                    <ul class="space-y-4">
-                        <li><a href="about.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Our Heritage</a></li>
-                        <li><a href="products.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Shop Collection</a></li>
-                        <li><a href="ingredients.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Ayurvedic Ingredients</a></li>
-                        <li><a href="certifications.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Certifications</a></li>
-                        <li><a href="contact.html" class="text-white/70 hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
-                    </ul>
+                    <h3 class="text-2xl font-serif font-bold text-primary-900 mb-2">Experience the <span class="text-gradient-gold italic">Potency</span></h3>
+                    <p class="text-primary-900/60 text-sm">Discover premium formulations featuring our highest grade extracts.</p>
                 </div>
-                <!-- Contact & Social -->
-                <div>
-                    <h4 class="text-gold-400 font-sans text-xs font-semibold uppercase tracking-widest mb-6">Connect</h4>
-                    <ul class="space-y-4 text-white/70 text-sm mb-8">
-                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-gold-500"></i> New Delhi, India</li>
-                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-gold-500"></i> wellness@hanuraam.com</li>
-                        <li class="flex items-center"><i class="fas fa-phone mr-3 text-gold-500"></i> +91 98765 43210</li>
-                    </ul>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold-600 hover:border-gold-600 transition-all duration-300"><i class="fab fa-youtube"></i></a>
+                <a href="products.html" class="hidden md:inline-flex text-xs uppercase tracking-widest text-gold-400 hover:text-primary-900 transition-colors items-center">
+                    Shop All Products <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product Card -->
+                <div class="glass-card rounded-2xl p-6 group flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-square mb-6 bg-white/60 rounded-xl overflow-hidden flex items-center justify-center p-8">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="assets/prod_ashwagandha.png" alt="Ashwagandha Plus" class="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="text-lg font-bold text-primary-900 mb-1">Ashwagandha Plus</h4>
+                    <p class="text-primary-900/50 text-xs mb-4 flex-grow">Stress & Vitality Support</p>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-gold-400 font-serif font-bold text-xl">₹1,899</span>
+                    </div>
+                    <div class="flex gap-2 mt-auto">
+                        <button onclick="addToCart(this)" class="flex-1 bg-white/70 hover:bg-gold-400 text-primary-900 hover:text-primary-900 transition-colors py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest">
+                            Add to Cart
+                        </button>
+                        <a href="product_ashwagandha.html" class="flex-none w-10 h-10 flex items-center justify-center bg-white/60 hover:bg-white/70 border border-primary-900/10 rounded-lg text-primary-900 transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="glass-card rounded-2xl p-6 group flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-square mb-6 bg-white/60 rounded-xl overflow-hidden flex items-center justify-center p-8">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="assets/prod_kordy_x.png" alt="KORDY X" class="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="text-lg font-bold text-primary-900 mb-1">KORDY X</h4>
+                    <p class="text-primary-900/50 text-xs mb-4 flex-grow">Effervescent Vitality</p>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-gold-400 font-serif font-bold text-xl">₹1,499</span>
+                    </div>
+                    <div class="flex gap-2 mt-auto">
+                        <button onclick="addToCart(this)" class="flex-1 bg-white/70 hover:bg-gold-400 text-primary-900 hover:text-primary-900 transition-colors py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest">
+                            Add to Cart
+                        </button>
+                        <a href="product_kordy_x.html" class="flex-none w-10 h-10 flex items-center justify-center bg-white/60 hover:bg-white/70 border border-primary-900/10 rounded-lg text-primary-900 transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="glass-card rounded-2xl p-6 group flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-square mb-6 bg-white/60 rounded-xl overflow-hidden flex items-center justify-center p-8">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="assets/prod_shilajit.png" alt="Shilajit Gold" class="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="text-lg font-bold text-primary-900 mb-1">Shilajit Gold</h4>
+                    <p class="text-primary-900/50 text-xs mb-4 flex-grow">Pure Himalayan Resin</p>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-gold-400 font-serif font-bold text-xl">₹3,299</span>
+                    </div>
+                    <div class="flex gap-2 mt-auto">
+                        <button onclick="addToCart(this)" class="flex-1 bg-white/70 hover:bg-gold-400 text-primary-900 hover:text-primary-900 transition-colors py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest">
+                            Add to Cart
+                        </button>
+                        <a href="product_shilajit.html" class="flex-none w-10 h-10 flex items-center justify-center bg-white/60 hover:bg-white/70 border border-primary-900/10 rounded-lg text-primary-900 transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="glass-card rounded-2xl p-6 group flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative aspect-square mb-6 bg-white/60 rounded-xl overflow-hidden flex items-center justify-center p-8">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="assets/prod_joyflex.png" alt="JOYFLEX PLUS" class="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="text-lg font-bold text-primary-900 mb-1">JOYFLEX PLUS</h4>
+                    <p class="text-primary-900/50 text-xs mb-4 flex-grow">Advanced Joint Relief</p>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-gold-400 font-serif font-bold text-xl">₹1,899</span>
+                    </div>
+                    <div class="flex gap-2 mt-auto">
+                        <button onclick="addToCart(this)" class="flex-1 bg-white/70 hover:bg-gold-400 text-primary-900 hover:text-primary-900 transition-colors py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest">
+                            Add to Cart
+                        </button>
+                        <a href="product_joyflex.html" class="flex-none w-10 h-10 flex items-center justify-center bg-white/60 hover:bg-white/70 border border-primary-900/10 rounded-lg text-primary-900 transition-colors">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-white/40 text-xs mb-4 md:mb-0">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
-                <div class="flex space-x-6 text-xs text-white/40">
-                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-gold-400 transition-colors">Shipping & Returns</a>
+            <div class="mt-12 text-center md:hidden">
+                <a href="products.html" class="inline-flex text-xs uppercase tracking-widest text-gold-400 hover:text-primary-900 transition-colors items-center border border-gold-400/30 px-6 py-3 rounded-full">
+                    Shop All Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Meets Ayurveda -->
+    <section class="py-24 bg-earth-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-gold-500 tracking-[0.2em] uppercase text-xs mb-4 block font-semibold">The Hanuraam Standard</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-primary-900">Science Meets <span class="text-gradient-gold italic">Ayurveda</span></h2>
+                <p class="text-primary-900/60 max-w-2xl mx-auto font-light">Every ingredient goes through a rigorous multi-step journey to ensure maximum potency, safety, and purity.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto bg-earth-50 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 relative z-10">
+                        <i class="fas fa-seedling text-gold-400 text-2xl"></i>
+                    </div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-px bg-gold-500/20 z-0"></div>
+                    <h4 class="text-primary-900 font-bold mb-2">Ethical Sourcing</h4>
+                    <p class="text-primary-900/50 text-xs leading-relaxed">Harvested at peak potency from traditional geographic origins.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 mx-auto bg-earth-50 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 relative z-10">
+                        <i class="fas fa-flask text-gold-400 text-2xl"></i>
+                    </div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-px bg-gold-500/20 z-0"></div>
+                    <h4 class="text-primary-900 font-bold mb-2">Extraction</h4>
+                    <p class="text-primary-900/50 text-xs leading-relaxed">Advanced supercritical fluid extraction preserves delicate active compounds.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 mx-auto bg-earth-50 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 relative z-10">
+                        <i class="fas fa-microscope text-gold-400 text-2xl"></i>
+                    </div>
+                    <div class="hidden md:block absolute top-10 left-1/2 w-full h-px bg-gold-500/20 z-0"></div>
+                    <h4 class="text-primary-900 font-bold mb-2">Standardization</h4>
+                    <p class="text-primary-900/50 text-xs leading-relaxed">Tested for exact percentages of key bio-actives (e.g. Withanolides).</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="text-center relative" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 mx-auto bg-earth-50 rounded-full border border-gold-500/30 flex items-center justify-center mb-6 relative z-10">
+                        <i class="fas fa-check-double text-gold-400 text-2xl"></i>
+                    </div>
+                    <h4 class="text-primary-900 font-bold mb-2">Purity Testing</h4>
+                    <p class="text-primary-900/50 text-xs leading-relaxed">Rigorous heavy metal, microbial, and toxin screening.</p>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white border-t border-gold-500/10 relative z-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-serif font-bold text-primary-900 mb-4">Frequently Asked <span class="text-gradient-gold italic">Questions</span></h2>
+            </div>
+            
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- Accordion Item 1 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-primary-900">Are your ingredients organic?</span>
+                        <i class="fas fa-plus text-gold-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-primary-900/60 text-sm font-light hidden">
+                        We prioritize organic cultivation wherever possible. All our botanical ingredients are ethically wild-harvested or grown without synthetic pesticides, and they undergo strict laboratory testing to ensure zero heavy metals or chemical residue.
+                    </div>
+                </div>
+                <!-- Accordion Item 2 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-primary-900">What does "Standardized Extract" mean?</span>
+                        <i class="fas fa-plus text-gold-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-primary-900/60 text-sm font-light hidden">
+                        A standardized extract ensures that every batch contains a guaranteed, specific percentage of the herb's active compound (like 5% Withanolides in Ashwagandha). This ensures consistent clinical efficacy in every dose.
+                    </div>
+                </div>
+                <!-- Accordion Item 3 -->
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-primary-900">Are they safe for long-term use?</span>
+                        <i class="fas fa-plus text-gold-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-5 text-primary-900/60 text-sm font-light hidden">
+                        Most Ayurvedic adaptogens and rasayanas are designed for long-term daily use to build foundational health. However, we always recommend consulting with your healthcare provider if you have specific medical conditions or are pregnant.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-32 relative overflow-hidden flex items-center justify-center bg-earth-100">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold-500/20 via-transparent to-transparent z-0"></div>
+        <div class="relative z-10 text-center max-w-2xl px-4" data-aos="zoom-in">
+            <i class="fas fa-leaf text-4xl text-gold-400 mb-6 block"></i>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary-900 mb-6">Begin Your Wellness Journey</h2>
+            <p class="text-primary-900/70 font-light mb-10 text-lg">Experience the transformative power of ancient botanical wisdom, refined for modern living.</p>
+            <a href="products.html" class="inline-block px-10 py-4 bg-gradient-gold text-primary-900 font-bold uppercase tracking-widest text-sm rounded-lg shadow-[0_10px_30px_rgba(212,175,55,0.3)] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(212,175,55,0.4)] transition-all duration-300">
+                Explore Formulations
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer placeholder -->
+    <footer>[Footer placeholder - will be synced by apply_footer.py]</footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 1000, offset: 100 });
+        AOS.init({ once: true, duration: 1000, offset: 50 });
         
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            var menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus', 'rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-minus', 'rotate-180');
+                icon.classList.add('fa-plus');
+            }
+        }
         
+        // Sticky Nav logic
         window.addEventListener('scroll', function() {
             var nav = document.querySelector('nav');
             if (window.scrollY > 10) {
                 nav.classList.add('bg-white/95');
-                nav.classList.remove('glass');
+                nav.classList.remove('glass', 'border-primary-900/10');
             } else {
-                nav.classList.add('glass');
+                nav.classList.add('glass', 'border-primary-900/10');
                 nav.classList.remove('bg-white/95');
             }
         });
 
+        // Add to Cart Logic
         let cartCount = 0;
-        function addToCart(product, price) {
+        function addToCart(btn) {
             cartCount++;
-            document.querySelectorAll('a[href="cart.html"] span.absolute').forEach(el => {
-                el.textContent = cartCount;
+            document.querySelectorAll('.cart-counter').forEach(el => {
+                el.innerText = cartCount;
                 el.classList.add('scale-125');
-                setTimeout(() => el.classList.remove('scale-125'), 200);
+                setTimeout(() => el.classList.remove('scale-125'), 300);
             });
-            // Show toast
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-4 right-4 bg-gold-500 border border-gold-600 text-primary-900 font-semibold px-6 py-3 rounded-lg z-[100] shadow-xl transform translate-y-full opacity-0 transition-all duration-300';
-            toast.innerHTML = `<i class="fas fa-check-circle text-primary-900 mr-2"></i> Added ${product} to cart`;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-full', 'opacity-0');
-            }, 100);
-            
-            setTimeout(() => {
-                toast.classList.add('translate-y-full', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            if (btn && btn.innerHTML) {
+                let originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> ADDED';
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                }, 2000);
+            }
         }
     </script>
 </body>
-</html>
-"""
+</html>'''
 
-full_html = html_head + html_body + html_footer
+with open("e:/ecc/ingredients.html", "w", encoding="utf-8") as f:
+    f.write(html_head + html_grid + html_middle + html_spotlights + html_end)
 
-with open('e:/ecc/ingredients.html', 'w', encoding='utf-8') as f:
-    f.write(full_html)
-
-print("Fixed syntax bug and updated premium ingredients page successfully!")
+print("Generated full luxury ingredients.html successfully!")

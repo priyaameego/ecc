@@ -1,0 +1,662 @@
+
+html = r"""<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE HANURAAM WELLNESS | Luxury Ayurvedic Formulations</title>
+    <meta name="description" content="Discover world-class luxury Ayurvedic formulations. Where Ancient Wisdom Meets Modern Science.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' },
+                        gold: { 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' },
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' },
+                        charcoal: { 800: '#2D2D2D', 900: '#1C1C1C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 4s infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'scroll': 'scrollDown 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+                        },
+                        scrollDown: {
+                            '0%': { transform: 'translateY(0)', opacity: 1 },
+                            '100%': { transform: 'translateY(15px)', opacity: 0 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }
+            .glass-dark { @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+        }
+        body { @apply bg-earth-50 text-charcoal-900 font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F5EF; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+        
+        .bg-grain {
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        /* Hide scrollbar for horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-primary-900">
+
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-500 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max font-medium tracking-wide">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 relative">
+                <div class="hidden md:flex space-x-8 items-center w-1/3">
+                    <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium               ">About</a>
+                    <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
+                </div>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain hover:scale-105 transition-transform duration-500">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center justify-end w-1/3">
+                    <a href="ingredients.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Ingredients</a>
+                    <a href="certifications.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Certifications</a>
+                    <a href="contact.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Contact</a>
+                    <a href="thankyou.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Thank You</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative group">
+                        <i class="fas fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
+                    </a>
+                </div>
+                
+                <div class="md:hidden flex items-center space-x-4 ml-auto">
+                    <a href="cart.html" class="text-primary-900 relative">
+                        <i class="fas fa-shopping-bag text-xl"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+<div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900">Contact</a>
+            </div>
+        </div>
+    <!-- Lightbox CSS -->
+    <style>
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(28, 28, 28, 0.95);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.15);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+        .lightbox.show .lightbox-content {
+            transform: scale(1);
+        }
+        .lightbox-content.zoomed {
+            max-width: none;
+            max-height: none;
+            width: 150%;
+            cursor: zoom-out;
+        }
+        .lightbox-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #D4AF37;
+            font-size: 40px;
+            font-weight: 300;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .close-lightbox:hover,
+        .close-lightbox:focus {
+            color: #FFF;
+            text-decoration: none;
+        }
+        .download-btn {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 101;
+        }
+        
+        .gold-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(212, 175, 55, 0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+    </style>
+
+    <!-- 1. Hero Section -->
+    <section class="relative pt-32 pb-24 overflow-hidden bg-earth-50 border-b border-primary-900/5">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-earth-100 to-transparent"></div>
+            <img src="assets/botanical_gokshura.png" alt="Botanical Pattern" class="absolute -right-20 top-20 w-96 opacity-5 animate-spin-slow" style="filter: grayscale(100%);">
+            <img src="assets/botanical_shilajit.png" alt="Botanical Pattern" class="absolute -left-20 bottom-10 w-96 opacity-5 animate-float" style="filter: grayscale(100%);">
+        </div>
+        <div class="bg-grain"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-gold-600 font-sans text-xs uppercase tracking-[0.3em] font-bold mb-4 block" data-aos="fade-down">Recognized Standards. Verified Quality.</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-primary-900 mb-6" data-aos="fade-up" data-aos-delay="100">Certifications & Compliance</h1>
+            <p class="text-charcoal-900/70 max-w-2xl mx-auto text-lg md:text-xl font-light mb-12" data-aos="fade-up" data-aos-delay="200">
+                A commitment to absolute purity, validated by global standards. Discover the rigorous science behind our traditional Ayurvedic formulations.
+            </p>
+            
+            <div class="animate-scroll inline-flex items-center justify-center w-10 h-16 border-2 border-primary-900/20 rounded-full mx-auto" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-1.5 h-3 bg-gold-500 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Premium Certificate Gallery -->
+    <section class="py-24 bg-white relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif text-primary-900">Global Standards</h2>
+                <div class="w-24 h-px bg-gold-500 mx-auto mt-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                
+                <!-- FDA & ISO -->
+                <div class="group relative cursor-pointer" onclick="openLightbox('assets/cert_fda_iso.png', 'FDA & ISO 9001:2015 Certifications')" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 bg-gold-500/10 blur-2xl group-hover:bg-gold-500/20 transition-all duration-500 rounded-xl"></div>
+                    <div class="relative bg-earth-50 border border-primary-900/10 p-6 rounded-xl overflow-hidden glass-card">
+                        <div class="gold-shimmer absolute inset-0 z-10 pointer-events-none"></div>
+                        <div class="aspect-[3/4] bg-white border border-gold-500/20 flex items-center justify-center p-4 relative overflow-hidden group-hover:border-gold-500 transition-colors duration-500">
+                            <img src="assets/cert_fda_iso.png" alt="FDA & ISO 9001:2015" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/5 transition-colors duration-500 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-50 group-hover:scale-100">
+                                    <i class="fas fa-search-plus text-primary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <h3 class="font-serif text-xl text-primary-900 mb-2 group-hover:text-gold-600 transition-colors">US FDA & ISO 9001:2015</h3>
+                            <p class="text-xs text-charcoal-900/60 uppercase tracking-widest font-semibold">Quality Management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GMP & AYUSH -->
+                <div class="group relative cursor-pointer" onclick="openLightbox('assets/cert_gmp_ayush.png', 'GMP & AYUSH Certifications')" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute inset-0 bg-gold-500/10 blur-2xl group-hover:bg-gold-500/20 transition-all duration-500 rounded-xl"></div>
+                    <div class="relative bg-earth-50 border border-primary-900/10 p-6 rounded-xl overflow-hidden glass-card">
+                        <div class="gold-shimmer absolute inset-0 z-10 pointer-events-none" style="animation-delay: 1s;"></div>
+                        <div class="aspect-[3/4] bg-white border border-gold-500/20 flex items-center justify-center p-4 relative overflow-hidden group-hover:border-gold-500 transition-colors duration-500">
+                            <img src="assets/cert_gmp_ayush.png" alt="GMP & AYUSH" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/5 transition-colors duration-500 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-50 group-hover:scale-100">
+                                    <i class="fas fa-search-plus text-primary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <h3 class="font-serif text-xl text-primary-900 mb-2 group-hover:text-gold-600 transition-colors">GMP & AYUSH</h3>
+                            <p class="text-xs text-charcoal-900/60 uppercase tracking-widest font-semibold">Manufacturing Practices</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HACCP & HALAL -->
+                <div class="group relative cursor-pointer" onclick="openLightbox('assets/cert_haccp_halal.png', 'HACCP & HALAL Certifications')" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute inset-0 bg-gold-500/10 blur-2xl group-hover:bg-gold-500/20 transition-all duration-500 rounded-xl"></div>
+                    <div class="relative bg-earth-50 border border-primary-900/10 p-6 rounded-xl overflow-hidden glass-card">
+                        <div class="gold-shimmer absolute inset-0 z-10 pointer-events-none" style="animation-delay: 2s;"></div>
+                        <div class="aspect-[3/4] bg-white border border-gold-500/20 flex items-center justify-center p-4 relative overflow-hidden group-hover:border-gold-500 transition-colors duration-500">
+                            <img src="assets/cert_haccp_halal.png" alt="HACCP & HALAL" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-primary-900/0 group-hover:bg-primary-900/5 transition-colors duration-500 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-50 group-hover:scale-100">
+                                    <i class="fas fa-search-plus text-primary-900"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <h3 class="font-serif text-xl text-primary-900 mb-2 group-hover:text-gold-600 transition-colors">HACCP & HALAL</h3>
+                            <p class="text-xs text-charcoal-900/60 uppercase tracking-widest font-semibold">Food Safety Standards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center text-sm text-charcoal-900/50 mt-12" data-aos="fade-up">Note: FSSAI and other regional certifications are maintained at our manufacturing facilities and available upon request.</p>
+        </div>
+    </section>
+
+    <!-- 3. Our Quality Commitment -->
+    <section class="py-24 bg-primary-900 text-earth-50 relative overflow-hidden border-t border-gold-500/20">
+        <div class="bg-grain"></div>
+        <div class="absolute inset-0 z-0 opacity-10 mix-blend-screen">
+            <img src="assets/hero_bg.png" alt="Background Texture" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-gold-400 font-sans text-xs uppercase tracking-[0.3em] font-bold mb-4 block">Our Philosophy</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight">Our Quality Commitment</h2>
+                    <p class="text-white/70 text-lg font-light mb-6 leading-relaxed">
+                        At THE HANURAAM WELLNESS, we believe that true wellness stems from absolute purity. We bridge the gap between ancient Ayurvedic wisdom and modern scientific validation.
+                    </p>
+                    <p class="text-white/70 text-lg font-light mb-8 leading-relaxed">
+                        Every single batch undergoes rigorous testing for heavy metals, microbial contaminants, and active compound potency. We do not compromise on safety, ensuring that what reaches you is 100% natural, highly bioavailable, and completely safe.
+                    </p>
+                    <ul class="space-y-4 text-sm font-medium tracking-wide">
+                        <li class="flex items-center"><i class="fas fa-check text-gold-400 mr-3"></i> 100+ Rigorous Quality Checks</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gold-400 mr-3"></i> NABL Accredited Independent Testing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-gold-400 mr-3"></i> Ethical Wildcrafting & Sourcing</li>
+                    </ul>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="aspect-square rounded-full border border-gold-500/20 p-4 relative animate-[spin_60s_linear_infinite]">
+                        <div class="w-full h-full border border-dashed border-white/20 rounded-full p-4">
+                            <div class="w-full h-full border border-gold-500/40 rounded-full flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-radial from-gold-500/20 to-transparent"></div>
+                                <img src="assets/logo.png" alt="Hanuraam Logo" class="h-32 brightness-0 invert opacity-80 animate-[spin_60s_linear_infinite_reverse]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Trust Icons -->
+    <section class="py-16 bg-earth-100 relative border-b border-primary-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto glass bg-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fas fa-shield-alt text-2xl text-gold-500"></i>
+                    </div>
+                    <h4 class="font-serif text-primary-900 font-semibold mb-1">Certified Quality</h4>
+                    <p class="text-xs text-charcoal-900/60 uppercase tracking-widest">Guaranteed Purity</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto glass bg-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fas fa-industry text-2xl text-gold-500"></i>
+                    </div>
+                    <h4 class="font-serif text-primary-900 font-semibold mb-1">Trusted Manufacturing</h4>
+                    <p class="text-xs text-charcoal-900/60 uppercase tracking-widest">GMP Compliant</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 mx-auto glass bg-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fas fa-globe text-2xl text-gold-500"></i>
+                    </div>
+                    <h4 class="font-serif text-primary-900 font-semibold mb-1">Global Standards</h4>
+                    <p class="text-xs text-charcoal-900/60 uppercase tracking-widest">ISO 9001:2015</p>
+                </div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 mx-auto glass bg-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                        <i class="fas fa-heart text-2xl text-gold-500"></i>
+                    </div>
+                    <h4 class="font-serif text-primary-900 font-semibold mb-1">Built on Trust</h4>
+                    <p class="text-xs text-charcoal-900/60 uppercase tracking-widest">Customer First</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Quality Journey Timeline -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-gold-600 font-sans text-xs uppercase tracking-[0.3em] font-bold mb-4 block">The Process</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-primary-900">Seed to Shelf Journey</h2>
+            </div>
+            
+            <div class="relative border-l border-gold-500/30 ml-4 md:ml-12 space-y-16">
+                <!-- Step 1 -->
+                <div class="relative pl-8 md:pl-16" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gold-500 shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                    <div class="text-gold-500 font-serif text-2xl font-bold mb-2">01</div>
+                    <h3 class="text-2xl font-serif text-primary-900 mb-3">Ingredient Selection & Wildcrafting</h3>
+                    <p class="text-charcoal-900/70 text-sm leading-relaxed">Our botanicals are ethically sourced from their native habitats across the Himalayas and fertile plains, ensuring maximum potency and respecting the local ecology.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative pl-8 md:pl-16" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-earth-200 border-2 border-gold-500"></div>
+                    <div class="text-gold-500 font-serif text-2xl font-bold mb-2">02</div>
+                    <h3 class="text-2xl font-serif text-primary-900 mb-3">Independent Lab Testing</h3>
+                    <p class="text-charcoal-900/70 text-sm leading-relaxed">Every raw material is quarantined and tested for heavy metals, pesticides, and microbial load before it enters our facilities.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative pl-8 md:pl-16" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-earth-200 border-2 border-gold-500"></div>
+                    <div class="text-gold-500 font-serif text-2xl font-bold mb-2">03</div>
+                    <h3 class="text-2xl font-serif text-primary-900 mb-3">GMP Manufacturing</h3>
+                    <p class="text-charcoal-900/70 text-sm leading-relaxed">Extraction and blending occur in our state-of-the-art GMP-certified facility, following traditional Ayurvedic purification methods combined with modern technology.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative pl-8 md:pl-16" data-aos="fade-up">
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-earth-200 border-2 border-gold-500"></div>
+                    <div class="text-gold-500 font-serif text-2xl font-bold mb-2">04</div>
+                    <h3 class="text-2xl font-serif text-primary-900 mb-3">Final Certification</h3>
+                    <p class="text-charcoal-900/70 text-sm leading-relaxed">The finished formulations undergo a final round of ISO-standard testing to guarantee standardized active compound levels (e.g. Withanolides, Fulvic Acid).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FAQ Section -->
+    <section class="py-24 bg-earth-50 relative overflow-hidden border-t border-primary-900/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif text-primary-900 mb-4">Safety & Compliance FAQs</h2>
+                <p class="text-charcoal-900/60 text-sm">Everything you need to know about our quality standards.</p>
+            </div>
+            
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ 1 -->
+                <div class="border border-primary-900/10 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button class="w-full text-left px-8 py-6 flex justify-between items-center focus:outline-none group" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.icon').classList.toggle('rotate-180')">
+                        <span class="font-serif text-lg text-primary-900 group-hover:text-gold-600 transition-colors">Do your products contain heavy metals?</span>
+                        <i class="fas fa-chevron-down text-gold-500 transition-transform duration-300 icon"></i>
+                    </button>
+                    <div class="px-8 pb-6 hidden text-charcoal-900/70 text-sm leading-relaxed border-t border-primary-900/5 pt-4">
+                        Absolutely not. While traditional Ayurvedic practices sometimes use heavy metals (Bhasmas), THE HANURAAM WELLNESS strictly avoids them. Every batch is rigorously tested in NABL-accredited labs to ensure levels of Lead, Mercury, Arsenic, and Cadmium are undetectable or well below stringent international safety limits.
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="border border-primary-900/10 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button class="w-full text-left px-8 py-6 flex justify-between items-center focus:outline-none group" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.icon').classList.toggle('rotate-180')">
+                        <span class="font-serif text-lg text-primary-900 group-hover:text-gold-600 transition-colors">What does GMP Certification mean?</span>
+                        <i class="fas fa-chevron-down text-gold-500 transition-transform duration-300 icon"></i>
+                    </button>
+                    <div class="px-8 pb-6 hidden text-charcoal-900/70 text-sm leading-relaxed border-t border-primary-900/5 pt-4">
+                        GMP (Good Manufacturing Practices) ensures that our products are consistently produced and controlled according to quality standards. It covers all aspects of production from the starting materials, premises, and equipment to the training and personal hygiene of staff.
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="border border-primary-900/10 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button class="w-full text-left px-8 py-6 flex justify-between items-center focus:outline-none group" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.icon').classList.toggle('rotate-180')">
+                        <span class="font-serif text-lg text-primary-900 group-hover:text-gold-600 transition-colors">Are the formulations AYUSH approved?</span>
+                        <i class="fas fa-chevron-down text-gold-500 transition-transform duration-300 icon"></i>
+                    </button>
+                    <div class="px-8 pb-6 hidden text-charcoal-900/70 text-sm leading-relaxed border-t border-primary-900/5 pt-4">
+                        Yes, our products are manufactured under strict guidelines set by the Ministry of AYUSH, Government of India, ensuring traditional authenticity combined with modern safety protocols.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Final CTA -->
+    <section class="py-24 relative overflow-hidden bg-primary-900">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="assets/hero_bg.png" alt="Background" class="w-full h-full object-cover">
+        </div>
+        <div class="bg-grain"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-serif text-gold-400 mb-6" data-aos="fade-up">Experience Certified Wellness</h2>
+            <p class="text-white/70 text-lg mb-10 font-light" data-aos="fade-up" data-aos-delay="100">Now that you know the rigorous science behind our brand, discover the profound impact of pure Ayurveda.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="products.html" class="bg-gold-500 text-primary-900 font-bold uppercase tracking-widest text-xs px-10 py-5 rounded-lg hover:bg-gold-400 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all">Shop Now</a>
+                <a href="ingredients.html" class="bg-transparent border border-gold-500/50 text-gold-400 font-bold uppercase tracking-widest text-xs px-10 py-5 rounded-lg hover:bg-gold-500/10 transition-all">Explore Ingredients</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="certLightbox" class="lightbox">
+        <a href="javascript:void(0)" class="close-lightbox" onclick="closeLightbox()">&times;</a>
+        <div class="lightbox-container" onclick="closeLightbox()">
+            <img class="lightbox-content" id="lightboxImg" onclick="event.stopPropagation(); toggleZoom()">
+        </div>
+        <a id="downloadBtn" href="#" download class="download-btn bg-gold-500 text-primary-900 font-bold uppercase tracking-widest text-[10px] px-6 py-3 rounded-full hover:bg-gold-400 transition-colors shadow-lg">
+            <i class="fas fa-download mr-2"></i> Download Certificate
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+        
+        // Lightbox Logic
+        const lightbox = document.getElementById('certLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let isZoomed = false;
+
+        function openLightbox(imgSrc, title) {
+            lightbox.classList.add('show');
+            lightboxImg.src = imgSrc;
+            downloadBtn.href = imgSrc;
+            // Prevent scrolling on body
+            document.body.style.overflow = 'hidden';
+            isZoomed = false;
+            lightboxImg.classList.remove('zoomed');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleZoom() {
+            isZoomed = !isZoomed;
+            if(isZoomed) {
+                lightboxImg.classList.add('zoomed');
+            } else {
+                lightboxImg.classList.remove('zoomed');
+            }
+        }
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+    </script>
+<footer class="bg-primary-900 text-white/70 pt-20 pb-10 border-t border-gold-500/20 relative z-10">
+        <div class="bg-grain"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 mb-6 brightness-0 invert">
+                    <p class="text-sm leading-relaxed mb-6">World-class Ayurvedic formulations crafted for the modern lifestyle. Purity, Potency, and Performance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="hover:text-gold-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
+                        <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
+                        <li><a href="about.html" class="text-gold-400 text-sm">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Join The Club</h4>
+                    <p class="text-sm mb-4">Subscribe to receive exclusive offers, Ayurvedic wellness tips, and early access to new launches.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="bg-white/5 border border-white/20 rounded-l-lg px-4 py-3 w-full text-white text-sm focus:outline-none focus:border-gold-500">
+                        <button type="button" class="bg-gold-500 text-primary-900 px-4 py-3 rounded-r-lg hover:bg-gold-400 transition-colors"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0 text-xs">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>"""
+with open('certifications.html', 'w', encoding='utf-8') as html_file:
+    html_file.write(html)

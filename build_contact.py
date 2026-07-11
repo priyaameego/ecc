@@ -1,43 +1,173 @@
-import os
-import re
 
-def get_base_html():
-    with open('about.html', 'r', encoding='utf-8') as f:
-        return f.read()
+html = r'''<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | THE HANURAAM WELLNESS</title>
+    <meta name="description" content="Discover the legacy, philosophy, and science behind THE HANURAAM WELLNESS. A luxury Ayurvedic brand.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 900: '#163A2F', 800: '#1F4D3B', 700: '#2E5E4E' },
+                        gold: { 300: '#F5E6A3', 400: '#E3C16F', 500: '#D4AF37', 600: '#C9A84C' },
+                        earth: { 50: '#FDFBF7', 100: '#F8F5EF', 200: '#F3EFE4' },
+                        charcoal: { 800: '#2D2D2D', 900: '#1C1C1C' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 4s infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'scroll': 'scrollDown 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' },
+                        },
+                        scrollDown: {
+                            '0%': { transform: 'translateY(0)', opacity: 1 },
+                            '100%': { transform: 'translateY(15px)', opacity: 0 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(22,58,47,0.05)]; }
+            .glass-dark { @apply bg-primary-900/80 backdrop-blur-xl border border-gold-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]; }
+            .glass-card { @apply bg-white/60 backdrop-blur-md border border-white/50 shadow-xl hover:border-gold-500/50 hover:bg-white hover:-translate-y-2 transition-all duration-500; }
+            .text-gradient-gold { @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+            .bg-gradient-gold { @apply bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400; }
+        }
+        body { @apply bg-earth-50 text-charcoal-900 font-sans overflow-x-hidden; }
+        h1, h2, h3, h4, h5, h6 { @apply font-serif text-primary-900; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F5EF; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+        
+        /* Grain Texture */
+        .bg-grain {
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.04;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; }
+        
+        /* Timeline */
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(212, 175, 55, 0.3);
+            top: 2rem;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        .timeline-item:last-child .timeline-dot::after { display: none; }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-primary-900">
 
-about_html = get_base_html()
+    <!-- Alert Bar -->
+    <div class="fixed top-0 w-full z-[60] bg-primary-900 text-gold-500 text-xs py-2 px-4 overflow-hidden border-b border-gold-600/30">
+        <div class="whitespace-nowrap animate-marquee flex space-x-12 w-max font-medium tracking-wide">
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+            <span>✨ 100% Pure Ayurvedic Formulations</span>
+            <span>🌿 Trusted by Thousands</span>
+            <span>🚚 Free Premium Shipping on Orders Over ₹999</span>
+            <span>🎁 Flat 15% OFF on First Purchase (Code: AYUR15)</span>
+        </div>
+    </div>
 
-# Extract head and nav
-head_match = re.search(r'(<!DOCTYPE html>.*?<nav.*?</nav>)', about_html, re.DOTALL)
-if not head_match:
-    print("Could not find head/nav")
-    exit(1)
-    
-head_nav = head_match.group(1)
-
-# Extract mobile menu
-mobile_menu_match = re.search(r'(<div id="mobile-menu".*?</div>\s*</div>)', about_html, re.DOTALL)
-mobile_menu = mobile_menu_match.group(1) if mobile_menu_match else ""
-
-# Extract footer and scripts
-footer_match = re.search(r'(<footer.*)', about_html, re.DOTALL)
-footer_scripts = footer_match.group(1) if footer_match else ""
-
-# Update Active states in Navigation
-# Remove active state from About
-head_nav = head_nav.replace('border-b-2 border-primary-900 pb-1', '')
-head_nav = head_nav.replace('class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium"', 'class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium"')
-
-# Add active state to Contact
-head_nav = head_nav.replace('<a href="contact.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Contact</a>',
-                            '<a href="contact.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Contact</a>')
-
-# Mobile menu updates
-mobile_menu = mobile_menu.replace('text-primary-900 border-b border-primary-900/10 font-bold', 'text-charcoal-900 border-b border-primary-900/10')
-mobile_menu = mobile_menu.replace('<a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Contact</a>',
-                                  '<a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-primary-900 border-b border-primary-900/10 font-bold">Contact</a>')
-
-html_content = head_nav + "\n" + mobile_menu + """
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 glass border-b border-white/40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 relative">
+                <div class="hidden md:flex space-x-8 items-center w-1/3">
+                    <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium               ">About</a>
+                    <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
+                </div>
+                
+                <div class="absolute left-1/2 -translate-x-1/2 flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 object-contain hover:scale-105 transition-transform duration-500">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center justify-end w-1/3">
+                    <a href="ingredients.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Ingredients</a>
+                    <a href="certifications.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Certifications</a>
+                    <a href="contact.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Contact</a>
+                    <a href="thankyou.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Thank You</a>
+                    <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative group">
+                        <i class="fas fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
+                    </a>
+                </div>
+                
+                <div class="md:hidden flex items-center space-x-4 ml-auto">
+                    <a href="cart.html" class="text-primary-900 relative">
+                        <i class="fas fa-shopping-bag text-xl"></i>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900">Contact</a>
+            </div>
+        </div>
+    </nav>
+<div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
+                <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
+                <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900">Contact</a>
+            </div>
+        </div>
     <!-- 1. Hero Section -->
     <section class="relative pt-32 pb-20 overflow-hidden bg-earth-50">
         <div class="absolute inset-0 z-0">
@@ -47,8 +177,8 @@ html_content = head_nav + "\n" + mobile_menu + """
         <div class="bg-grain"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <span class="text-gold-600 font-sans text-xs uppercase tracking-[0.3em] font-bold mb-4 block" data-aos="fade-down">Get In Touch</span>
-            <h1 class="text-5xl md:text-7xl font-serif text-primary-900 mb-6" data-aos="fade-up" data-aos-delay="100">Let's Begin Your Wellness Journey</h1>
-            <p class="text-charcoal-900/70 max-w-2xl mx-auto text-lg md:text-xl font-light" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="text-3xl sm:text-4xl md:text-7xl font-serif text-primary-900 mb-6" data-aos="fade-up" data-aos-delay="100">Let's Begin Your Wellness Journey</h1>
+            <p class="text-charcoal-900/70 max-w-2xl mx-auto text-base md:text-xl font-light" data-aos="fade-up" data-aos-delay="200">
                 Whether you have a question about our Ayurvedic formulations, need guidance on your regimen, or simply want to share your experience, we are here for you.
             </p>
         </div>
@@ -57,7 +187,7 @@ html_content = head_nav + "\n" + mobile_menu + """
     <!-- 2. Premium Contact Cards -->
     <section class="py-12 bg-earth-50 relative z-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-2 md:-mt-16">
                 <!-- Head Office -->
                 <div class="glass-card bg-white p-10 rounded-2xl text-center group" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 mx-auto bg-earth-200 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-500">
@@ -227,31 +357,105 @@ html_content = head_nav + "\n" + mobile_menu + """
     <section class="py-12 bg-primary-900 text-white relative overflow-hidden border-y border-gold-500/20">
         <div class="bg-grain"></div>
         <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-80">
-                <div class="flex flex-col items-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-24 opacity-80 place-items-center">
+                <div class="flex flex-col items-center text-center">
                     <i class="fas fa-leaf text-3xl text-gold-400 mb-2"></i>
                     <span class="text-[10px] uppercase tracking-widest font-bold">100% Natural</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center text-center">
                     <i class="fas fa-flask text-3xl text-gold-400 mb-2"></i>
                     <span class="text-[10px] uppercase tracking-widest font-bold">Lab Tested</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center text-center">
                     <i class="fas fa-certificate text-3xl text-gold-400 mb-2"></i>
                     <span class="text-[10px] uppercase tracking-widest font-bold">GMP Certified</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center text-center">
                     <i class="fas fa-vial text-3xl text-gold-400 mb-2"></i>
                     <span class="text-[10px] uppercase tracking-widest font-bold">No Synthetics</span>
                 </div>
             </div>
         </div>
     </section>
-""" + footer_scripts
+<footer class="bg-primary-900 text-white/70 pt-20 pb-10 border-t border-gold-500/20 relative z-10">
+        <div class="bg-grain"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-12 mb-6 brightness-0 invert">
+                    <p class="text-sm leading-relaxed mb-6">World-class Ayurvedic formulations crafted for the modern lifestyle. Purity, Potency, and Performance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="hover:text-gold-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
+                        <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
+                        <li><a href="about.html" class="text-gold-400 text-sm">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Join The Club</h4>
+                    <p class="text-sm mb-4">Subscribe to receive exclusive offers, Ayurvedic wellness tips, and early access to new launches.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="bg-white/5 border border-white/20 rounded-l-lg px-4 py-3 w-full text-white text-sm focus:outline-none focus:border-gold-500">
+                        <button type="button" class="bg-gold-500 text-primary-900 px-4 py-3 rounded-r-lg hover:bg-gold-400 transition-colors"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0 text-xs">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-with open('e:/ecc/build_contact.py', 'w', encoding='utf-8') as f:
-    f.write(f"""
-html = r'''{html_content}'''
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>'''
 with open('contact.html', 'w', encoding='utf-8') as html_file:
     html_file.write(html)
-""")

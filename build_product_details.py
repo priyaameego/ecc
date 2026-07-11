@@ -96,7 +96,7 @@ HTML_CONTENT = """<!DOCTYPE html>
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
-                    <a href="about.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium               ">About</a>
                     <a href="products.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Products</a>
                 </div>
                 
@@ -106,19 +106,21 @@ HTML_CONTENT = """<!DOCTYPE html>
                     </a>
                 </div>
                 
-                <div class="hidden md:flex space-x-8 items-center justify-end w-1/3">
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center justify-end w-1/3">
                     <a href="ingredients.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Ingredients</a>
+                    <a href="certifications.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Certifications</a>
                     <a href="contact.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Contact</a>
+                    <a href="thankyou.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Thank You</a>
                     <a href="cart.html" class="text-primary-900 hover:text-gold-600 transition-colors relative group">
                         <i class="fas fa-shopping-bag text-xl group-hover:scale-110 transition-transform"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-gold-500/30">0</span>
                     </a>
                 </div>
                 
                 <div class="md:hidden flex items-center space-x-4 ml-auto">
                     <a href="cart.html" class="text-primary-900 relative">
                         <i class="fas fa-shopping-bag text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                        <span class="cart-counter absolute -top-2 -right-2 bg-primary-900 text-gold-400 text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
                     </a>
                     <button id="mobile-menu-btn" class="text-primary-900 hover:text-gold-600 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
@@ -130,8 +132,11 @@ HTML_CONTENT = """<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
-                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-primary-900 border-b border-primary-900/10 font-bold">Products</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
+                <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
+                <a href="thankyou.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Thank You</a>
                 <a href="contact.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900">Contact</a>
             </div>
         </div>
@@ -206,12 +211,12 @@ HTML_CONTENT = """<!DOCTYPE html>
                         </div>
                         
                         <!-- Buttons -->
-                        <button class="flex-1 bg-primary-900 text-gold-400 rounded-lg py-4 font-semibold uppercase tracking-widest text-sm hover:bg-primary-800 transition-all duration-300 shadow-[0_10px_30px_rgba(22,58,47,0.3)] hover:shadow-[0_15px_40px_rgba(22,58,47,0.4)] hover:-translate-y-1 relative overflow-hidden group">
+                        <button onclick="addToCart(this)" class="flex-1 bg-primary-900 text-gold-400 rounded-lg py-4 font-semibold uppercase tracking-widest text-sm hover:bg-primary-800 transition-all duration-300 shadow-[0_10px_30px_rgba(22,58,47,0.3)] hover:shadow-[0_15px_40px_rgba(22,58,47,0.4)] hover:-translate-y-1 relative overflow-hidden group">
                             <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                             <span class="relative z-10 flex items-center justify-center"><i class="fas fa-shopping-bag mr-3"></i> Add to Cart</span>
                         </button>
                         
-                        <button class="flex-1 bg-gradient-gold text-primary-900 rounded-lg py-4 font-bold uppercase tracking-widest text-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <button onclick="buyNow(this)" class="flex-1 bg-gradient-gold text-primary-900 rounded-lg py-4 font-bold uppercase tracking-widest text-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                             Buy It Now
                         </button>
                     </div>
@@ -272,7 +277,7 @@ HTML_CONTENT = """<!DOCTYPE html>
                     <span class="text-gold-600 tracking-[0.2em] uppercase text-xs font-semibold mb-3 block">Wellness Reimagined</span>
                     <h2 class="text-4xl font-serif text-primary-900 mb-6 leading-tight">Elevate Every Aspect of Your Day</h2>
                     <p class="text-charcoal-900/70 font-light mb-8 leading-relaxed">Experience a profound shift in your physical and mental state. KORDY X targets the root causes of fatigue and stress, providing a holistic uplift to your well-being.</p>
-                    <button class="px-8 py-3 border border-primary-900 text-primary-900 uppercase tracking-widest text-xs font-semibold hover:bg-primary-900 hover:text-gold-400 transition-colors duration-300">Explore Ingredients</button>
+                    <a href="ingredients.html" class="inline-block px-8 py-3 border border-primary-900 text-primary-900 uppercase tracking-widest text-xs font-semibold hover:bg-primary-900 hover:text-gold-400 transition-colors duration-300 text-center">Explore Ingredients</a>
                 </div>
                 
                 <!-- Benefits Grid -->
@@ -761,7 +766,7 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <p class="text-gold-600 text-sm font-semibold">₹1,499</p>
             </div>
         </div>
-        <button class="w-full sm:w-auto px-12 py-3 bg-primary-900 text-gold-400 rounded-lg uppercase tracking-widest text-xs font-bold hover:bg-primary-800 transition-colors shadow-lg shadow-primary-900/30">
+        <button onclick="addToCart(this)" class="w-full sm:w-auto px-12 py-3 bg-primary-900 text-gold-400 rounded-lg uppercase tracking-widest text-xs font-bold hover:bg-primary-800 transition-colors shadow-lg shadow-primary-900/30">
             Add to Cart
         </button>
     </div>
@@ -811,6 +816,31 @@ HTML_CONTENT = """<!DOCTYPE html>
             if(newVal >= 1) {
                 qtyInput.value = newVal;
             }
+        }
+        
+        // Add to Cart Logic
+        let cartCount = 0;
+        function addToCart(btn) {
+            cartCount++;
+            document.querySelectorAll('.cart-counter').forEach(el => {
+                el.innerText = cartCount;
+                el.classList.add('scale-125');
+                setTimeout(() => el.classList.remove('scale-125'), 300);
+            });
+            if (btn && btn.innerHTML) {
+                let originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> ADDED';
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                }, 2000);
+            }
+        }
+
+        function buyNow(btn) {
+            addToCart(btn);
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 600);
         }
     </script>
 </body>

@@ -151,7 +151,7 @@ html_content = f"""<!DOCTYPE html>
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium border-b-2 border-primary-900 pb-1">Home</a>
-                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                ">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                  ">About</a>
                     <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
                 </div>
                 
@@ -187,7 +187,7 @@ html_content = f"""<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Home</a>
-                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
                 <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Ingredients</a>
                 <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
@@ -252,30 +252,7 @@ html_content = f"""<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- 5. Why Choose HANURAAM (Trust Bar) -->
-    <section class="py-12 bg-primary-900 text-white border-y border-gold-500/20 relative">
-        <div class="bg-grain"></div>
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div data-aos="fade-up" data-aos-delay="0">
-                    <i class="fas fa-leaf text-2xl text-gold-400 mb-3"></i>
-                    <h4 class="font-serif text-sm tracking-wide">100% Natural</h4>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-microscope text-2xl text-gold-400 mb-3"></i>
-                    <h4 class="font-serif text-sm tracking-wide">Lab Tested</h4>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-award text-2xl text-gold-400 mb-3"></i>
-                    <h4 class="font-serif text-sm tracking-wide">GMP Certified</h4>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-hands-holding-heart text-2xl text-gold-400 mb-3"></i>
-                    <h4 class="font-serif text-sm tracking-wide">Ethically Sourced</h4>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- 2 & 3. Premium Categories & Shop By Health Goals -->
     <section class="py-24 bg-white relative">

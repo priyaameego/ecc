@@ -187,7 +187,7 @@ html_head = r'''<!DOCTYPE html>
             <div class="flex justify-between items-center h-20 relative">
                 <div class="hidden md:flex space-x-8 items-center w-1/3">
                     <a href="index.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Home</a>
-                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                ">About</a>
+                    <a href="about.html" class="text-primary-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium                  ">About</a>
                     <a href="products.html" class="text-charcoal-900 hover:text-gold-600 transition-colors uppercase text-sm tracking-widest font-medium">Products</a>
                 </div>
                 
@@ -223,7 +223,7 @@ html_head = r'''<!DOCTYPE html>
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/40">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="index.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Home</a>
-                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
+                <a href="about.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold font-bold text-primary-900 border-b border-primary-900/10">About</a>
                 <a href="products.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Products</a>
                 <a href="ingredients.html" class="block py-2 text-sm uppercase tracking-widest font-medium font-bold text-primary-900 border-b border-primary-900/10">Ingredients</a>
                 <a href="certifications.html" class="block py-2 text-sm uppercase tracking-widest font-medium text-charcoal-900 border-b border-primary-900/10">Certifications</a>
@@ -365,8 +365,10 @@ for i, ing in enumerate(ingredients):
     <!-- Premium Ingredient Spotlight: {ing['name']} -->
     <section id="ingredient-{ing['id']}" class="py-32 relative {bg_color} border-t border-gold-500/10">
         <!-- Giant Watermark -->
-        <div class="absolute top-20 left-0 w-full overflow-hidden whitespace-nowrap pointer-events-none select-none">
-            <span class="text-[10rem] md:text-[20rem] font-serif font-bold text-primary-900/[0.02] tracking-tighter">{ing['name']}</span>
+        <div class="absolute inset-0 w-full overflow-hidden whitespace-nowrap pointer-events-none select-none z-0">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span class="text-[10rem] md:text-[20rem] font-serif font-bold text-primary-900/[0.02] tracking-tighter">{ing['name']}</span>
+            </div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

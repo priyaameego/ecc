@@ -607,7 +607,72 @@ html_end = r'''
     </section>
 
     <!-- Footer placeholder -->
-    <footer>[Footer placeholder - will be synced by apply_footer.py]</footer>
+    <footer class="bg-charcoal-900 text-white/70 pt-20 pb-10 relative z-10 border-t border-gold-500/20">
+        <div class="bg-grain"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <img src="assets/logo.png" alt="THE HANURAAM WELLNESS" class="h-16 mb-6 object-contain bg-white/10 p-2 rounded-lg">
+                    <p class="text-sm leading-relaxed mb-6">World-class Ayurvedic formulations crafted for the modern lifestyle. Purity, Potency, and Performance.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold-500 hover:text-gold-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gold-400 text-sm">Home</a></li>
+                        <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
+                        <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
+                        <li><a href="about.html" class="hover:text-gold-400 transition-colors text-sm">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html" class="hover:text-gold-400 transition-colors text-sm">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors text-sm">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Payment Badges -->
+                <div>
+                    <h4 class="text-white font-serif text-lg mb-6">Secure Checkout</h4>
+                    <div class="flex flex-wrap gap-2 text-2xl text-white/50">
+                        <i class="fab fa-cc-visa hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-mastercard hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-amex hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-paypal hover:text-white transition-colors"></i>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-white font-serif text-lg mb-4">Certifications</h4>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">GMP</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">FSSAI</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">AYUSH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-xs">&copy; 2026 THE HANURAAM WELLNESS. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0 text-xs">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

@@ -377,7 +377,7 @@ html = r'''<!DOCTYPE html>
             </div>
         </div>
     </section>
-<footer class="bg-primary-900 text-white/70 pt-20 pb-10 border-t border-gold-500/20 relative z-10">
+<footer class="bg-charcoal-900 text-white/70 pt-20 pb-10 relative z-10 border-t border-gold-500/20">
         <div class="bg-grain"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -396,10 +396,10 @@ html = r'''<!DOCTYPE html>
                 <div>
                     <h4 class="text-white font-serif text-lg mb-6">Explore</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="hover:text-gold-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="index.html" class="text-gold-400 text-sm">Home</a></li>
                         <li><a href="products.html" class="hover:text-gold-400 transition-colors text-sm">All Products</a></li>
                         <li><a href="ingredients.html" class="hover:text-gold-400 transition-colors text-sm">Our Ingredients</a></li>
-                        <li><a href="about.html" class="text-gold-400 text-sm">About Us</a></li>
+                        <li><a href="about.html" class="hover:text-gold-400 transition-colors text-sm">About Us</a></li>
                     </ul>
                 </div>
                 
@@ -414,14 +414,23 @@ html = r'''<!DOCTYPE html>
                     </ul>
                 </div>
                 
-                <!-- Newsletter -->
+                <!-- Payment Badges -->
                 <div>
-                    <h4 class="text-white font-serif text-lg mb-6">Join The Club</h4>
-                    <p class="text-sm mb-4">Subscribe to receive exclusive offers, Ayurvedic wellness tips, and early access to new launches.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email address" class="bg-white/5 border border-white/20 rounded-l-lg px-4 py-3 w-full text-white text-sm focus:outline-none focus:border-gold-500">
-                        <button type="button" class="bg-gold-500 text-primary-900 px-4 py-3 rounded-r-lg hover:bg-gold-400 transition-colors"><i class="fas fa-arrow-right"></i></button>
-                    </form>
+                    <h4 class="text-white font-serif text-lg mb-6">Secure Checkout</h4>
+                    <div class="flex flex-wrap gap-2 text-2xl text-white/50">
+                        <i class="fab fa-cc-visa hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-mastercard hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-amex hover:text-white transition-colors"></i>
+                        <i class="fab fa-cc-paypal hover:text-white transition-colors"></i>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-white font-serif text-lg mb-4">Certifications</h4>
+                        <div class="flex gap-2">
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">GMP</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">FSSAI</span>
+                            <span class="px-2 py-1 border border-white/20 rounded text-[10px] uppercase font-bold">AYUSH</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
